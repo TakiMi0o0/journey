@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @books = Book.all.order('created_at DESC')
@@ -19,14 +20,29 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
   end
+
+  def edit
+  end
+
+  def update
+    if @book.update(book_params)
+      redirect_to book_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
 
   private
   def book_params
     params.require(:book)
     .permit(:user, :title, :description, :start, :end, :place, :publication)
     .merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @book = Book.find(params[:id])
   end
 
 end
