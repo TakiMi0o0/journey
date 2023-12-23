@@ -37,20 +37,17 @@
   </div>
 
   <div class="img-upload">
-      <div class="weight-bold-text">
-        画像
-      </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image, id:"book-image" %>
-      </div>
+    <div class="weight-bold-text">
+      画像
     </div>
-<div class="sell-btn-contents">
-      <%= f.submit "出発！" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    <div class="click-upload">
+      <p>クリックしてファイルをアップロード</p>
+      <%= f.file_field :image, id:"book-image" %>
     </div>
-
+  </div>
+  <div class="sell-btn-contents">
+    <%= f.submit "出発！" ,class:"sell-btn" %>
+    <%=link_to 'もどる', root_path, class:"back-btn" %>
+  </div>
 
 <% end %>

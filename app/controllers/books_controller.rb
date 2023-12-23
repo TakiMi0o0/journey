@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @books = Book.all.order('created_at DESC')
   end
@@ -14,6 +16,10 @@ class BooksController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @book = Book.find(params[:id])
   end
 
   private
