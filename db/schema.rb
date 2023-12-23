@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_14_075606) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_23_075819) do
   create_table "books", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
@@ -22,6 +22,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_14_075606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "schedules", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "summary", null: false
+    t.date "date_time", null: false
+    t.string "icon"
+    t.string "location"
+    t.string "departure"
+    t.string "arrival"
+    t.date "departure_time"
+    t.date "arrival_time"
+    t.string "cost"
+    t.string "url1"
+    t.string "url2"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -38,4 +57,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_14_075606) do
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "schedules", "users"
 end
