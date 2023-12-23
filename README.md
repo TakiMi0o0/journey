@@ -21,7 +21,8 @@
 | user             | references | null: false, foreign_key: true |
 | title            | string     | null: false                    |
 | description      | text       |                                |
-| period           | string     |                                |
+| start            | date       |                                |
+| end              | date       |                                |
 | place            | string     |                                |
 | publication      | string     | null: false                    |
 

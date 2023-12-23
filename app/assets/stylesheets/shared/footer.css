@@ -1,0 +1,20 @@
+.footer {
+  width: 100vw;
+  padding: 1vh 10vw;
+  background-color: #fff462;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.journey-icon-footer {
+  width: 120px;
+  vertical-align: bottom;
+}
+
+.footer>p {
+  font-size: 12px;
+  color: dimgray;
+}

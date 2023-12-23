@@ -1,0 +1,53 @@
+<%= form_with model: @book, local: true do |f| %>
+
+  <div class="weight-bold-text">
+    タイトル<span>*</span>
+  </div>
+  <%= f.text_field :title, class:"book-title", id:"book-name", placeholder:"タイトル（必須 30文字まで)", maxlength:"30" %>
+  <div class="books-explain">
+    <div class="weight-bold-text">
+      説明
+    </div>
+    <%= f.text_area :description, class:"book-text", id:"book-info", placeholder:"概要（1,000文字まで）", rows:"3" ,maxlength:"1000" %>
+  </div>
+  <div class="books-explain">
+    <div class="weight-bold-text">
+      期間
+    </div>
+    <%= f.date_field :start, class:"period" %>
+    ～
+    <%= f.date_field :end, class:"period" %>
+  </div>
+  <div class="books-explain">
+    <div class="weight-bold-text">
+      場所
+    </div>
+    <%= f.text_field :place, class:"place" %>
+  </div>
+  <div class="books-explain">
+    <div class="weight-bold-text">
+      公開しますか？<span>*</span>
+    </div>
+    <div class="publication">
+    <%= f.radio_button :publication, :close %>
+    <%= f.label :publication, "非公開" %>
+    <%= f.radio_button :publication, :open %>
+    <%= f.label :publication, "公開" %>
+    </div>
+  </div>
+
+  <div class="img-upload">
+    <div class="weight-bold-text">
+      画像
+    </div>
+    <div class="click-upload">
+      <p>クリックしてファイルをアップロード</p>
+      <%= f.file_field :image, id:"book-image" %>
+    </div>
+  </div>
+  <div class="sell-btn-contents">
+    <%= f.submit "出発！" ,class:"sell-btn" %>
+    <%=link_to 'もどる', root_path, class:"back-btn" %>
+  </div>
+
+<% end %>

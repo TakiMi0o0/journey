@@ -1,0 +1,34 @@
+<li class='list'> 
+  <div class='book-img-content'>
+  <%#= image_tag book.image, class: "book-img" %>
+  </div>
+
+  <div class='book-info'>
+    <h3 class='book-title'>
+      <%= @book.title %>
+      <% if @book.publication == "open" %>
+        <%= image_tag "open-icon.png", class: "open-icon" %>
+      <% end %>
+    </h3>
+    <div class='book-start'>
+      <%= @book.start %>
+    </div>
+    <div class='book-end'>
+      <%= @book.end %>
+    </div>
+    <div class='book-place'>
+      <%= @book.place %>
+    </div>
+    <div class='book-description'>
+      <%= @book.description %>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <% if current_user.id == @book.user_id %>
+      <%= link_to "編集", edit_book_path(@book.id), method: :get, class: "book-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", book_path(@book.id), 
+        data: { turbo_method: :delete }, method: :delete, class:"book-destroy" %>
+    <% end %>
+  <% end %>
+</li>
