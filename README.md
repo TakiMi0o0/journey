@@ -37,14 +37,14 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
-| summary          | text       | null: false                    |
-| date_time        | integer    | null: false                    |
+| summary          | string     | null: false                    |
+| date_time        | date       | null: false                    |
 | icon             | string     |                                |
 | location         | string     |                                |
 | departure        | string     |                                |
 | arrival          | string     |                                |
-| departure_time   | integer    |                                |
-| arrival_time     | integer    |                                |
+| departure_time   | date       |                                |
+| arrival_time     | date       |                                |
 | cost             | string     |                                |
 | url1             | string     |                                |
 | url2             | string     |                                |

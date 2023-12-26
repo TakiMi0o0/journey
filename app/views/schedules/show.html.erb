@@ -1,0 +1,50 @@
+<li class='list'> 
+  <div class='schedule-img-content'>
+  <%#= image_tag schedule.image, class: "schedule-img" %>
+  </div>
+  <% if user_signed_in? && current_user.id == @schedule.user_id %>
+  <div class='schedule-info'>
+    <h3 class='schedule-summary'>
+      <%= @schedule.summary %>
+    </h3>
+    <div class='schedule-date_time'>
+      <%= @schedule.date_time %>
+    </div>
+    <div class='schedule-icon'>
+      <%= @schedule.icon %>
+    </div>
+    <div class='schedule-location'>
+      <%= @schedule.location %>
+    </div>
+    <div class='schedule-departure'>
+      <%= @schedule.departure %>
+    </div>
+        <div class='schedule-arrival'>
+      <%= @schedule.arrival %>
+    </div>
+        <div class='schedule-departure_time'>
+      <%= @schedule.departure_time %>
+    </div>
+        <div class='schedule-arrival_time'>
+      <%= @schedule.arrival_time %>
+    </div>
+        <div class='schedule-cost'>
+      <%= @schedule.cost %>
+    </div>
+        <div class='schedule-url1'>
+      <%= @schedule.url1 %>
+    </div>
+        <div class='schedule-url2'>
+      <%= @schedule.url2 %>
+    </div>
+        <div class='schedule-memo'>
+      <%= @schedule.memo %>
+    </div>
+
+    <%= link_to "編集", edit_book_schedule_path, method: :get, class: "book-red-btn" %>
+    <p class="or-text">or</p>
+    <%= link_to image_tag("ごみ箱のフリーアイコン.png", class:"book-destroy"), book_schedule_path, 
+      data: { turbo_method: :delete }, method: :delete %>
+
+<% end %>
+</li>
