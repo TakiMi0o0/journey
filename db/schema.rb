@@ -26,14 +26,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_075819) do
 
   create_table "schedules", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.integer "book_id", null: false
     t.string "summary", null: false
-    t.date "date_time", null: false
+    t.datetime "date_time", null: false
     t.string "icon"
     t.string "location"
     t.string "departure"
     t.string "arrival"
-    t.date "departure_time"
-    t.date "arrival_time"
+    t.datetime "departure_time"
+    t.datetime "arrival_time"
     t.string "cost"
     t.string "url1"
     t.string "url2"

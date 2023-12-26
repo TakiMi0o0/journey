@@ -2,14 +2,15 @@ class CreateSchedules < ActiveRecord::Migration[7.0]
   def change
     create_table :schedules do |t|
       t.references :user,           null: false, foreign_key: true
+      t.integer    :book_id,        null: false
       t.string     :summary,        null: false
-      t.date       :date_time,      null: false
+      t.datetime   :date_time,      null: false
       t.string     :icon
       t.string     :location
       t.string     :departure 
       t.string     :arrival
-      t.date       :departure_time
-      t.date       :arrival_time
+      t.datetime   :departure_time
+      t.datetime   :arrival_time
       t.string     :cost
       t.string     :url1
       t.string     :url2 
