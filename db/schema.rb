@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_075819) do
   end
 
   create_table "schedules", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.integer "book_id", null: false
     t.string "summary", null: false
     t.datetime "date_time", null: false
@@ -41,7 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_075819) do
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -58,5 +57,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_075819) do
   end
 
   add_foreign_key "books", "users"
-  add_foreign_key "schedules", "users"
 end
