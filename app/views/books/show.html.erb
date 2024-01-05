@@ -1,8 +1,11 @@
 <li class='list'> 
   <div class='book-img-content'>
-  <%#= image_tag book.image, class: "book-img" %>
+  <%= image_tag @book.image, class: "book-img" if @book.image.attached? %>
   </div>
   <% if user_signed_in? && current_user.id == @book.user_id %>
+  <%= link_to "編集", edit_book_path(@book.id), method: :get, class: "book-red-btn" %>
+  <%= link_to image_tag("ごみ箱のフリーアイコン.png", class:"book-destroy"), 
+    book_path(@book.id), data: { turbo_method: :delete }, method: :delete %>
   <div class='book-info'>
     <h3 class='book-title'>
       <%= @book.title %>
@@ -10,6 +13,7 @@
         <%= image_tag "open-icon.png", class: "open-icon" %>
       <% end %>
     </h3>
+
     <div class='book-start'>
       <%= @book.start %>
     </div>

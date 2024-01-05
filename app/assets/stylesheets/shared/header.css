@@ -1,15 +1,21 @@
 * {
   box-sizing: border-box;
+  font-family: 'cursive';
 }
 
-.top-header {
+.header-kotei {
+  margin-bottom: 100px;
+}
+
+.header {
   width: 100vw;
   padding: 2vh 10vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #ea553a;
-  margin-bottom: 20px;
+  background-color: #a0d8ef;
+  position:fixed;
+  top: 0;
 }
 
 
@@ -26,6 +32,7 @@
 .input-box {
   padding-left: 12px;
   border: 0;
+  border-radius: 5px;
 }
 
 .search-button {
@@ -34,6 +41,7 @@
   cursor: pointer;
   padding: 8px;
   background-color: #f19ca7;
+  border-radius: 5px;
 }
 
 .search-icon {
@@ -56,22 +64,22 @@
   text-align: right;
   text-decoration: none;
   margin-right: 2vw;
-  color: #ede4e1;
+  color: #003f8e;
   font-weight: bold;
 }
 
 .logout {
   text-decoration: none;
-  color: #ede4e1;
+  color: #003f8e;
 }
 
 .login {
   text-decoration: none;
   margin-right: 2vw;
-  color: #ede4e1;
+  color: #003f8e;
 }
 
 .sign-up {
   text-decoration: none;
-  color: #ede4e1;
+  color: #003f8e;
 }

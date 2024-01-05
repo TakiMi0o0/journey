@@ -1,44 +1,53 @@
 <%= render "shared/header" %>
 
-  <ul class='book-lists'>
-    <%= link_to(new_book_path, data: {"turbolinks" => false}, class: 'purchase-btn') do %>
-      <h2>次の旅</h2>
-    <% end %>
-    
-    <% @books.each do |book| %>
-      <li class='list'> 
-      <%= link_to book_schedules_path(book.id) do %>
-        <div class='book-img-content'>
-          <%#= image_tag book.image, class: "book-img" %>
-        </div>
-
-        <div class='book-info'>
-          <h3 class='book-title'>
-            <%= book.title %>
-            <% if book.publication == "open" %>
-              <%= image_tag "open-icon.png", class: "open-icon" %>
-            <% end %>
-          </h3>
-          <div class='book-start'>
-            <%= book.start %>
-          </div>
-          <div class='book-end'>
-            <%= book.end %>
-          </div>
-          <div class='book-place'>
-            <%= book.place %>
-          </div>
-        </div>
-        <% if user_signed_in? && current_user.id == book.user_id %>
-          <%= link_to "詳細", book_path(book.id), method: :get, class: "book-red-btn" %>
-          <%= link_to "編集", edit_book_path(book.id), method: :get, class: "book-red-btn" %>
-          <p class="or-text">or</p>
-          <%= link_to image_tag("ごみ箱のフリーアイコン.png", class:"book-destroy"), book_path(book.id), 
-            data: { turbo_method: :delete }, method: :delete %>
-        <% end %>
-      </li>
+<div class='book'>
+  <div class='new-journey'>
+    <% if user_signed_in? %>
+      <%= link_to(new_book_path, data: {"turbolinks" => false}) do %>
+        <%= image_tag 'しおり付きの本のアイコン素材.png', class: "new-journey-icon" %>
+        <span class='new-journey-text'>次はどこへ行こうかな</span>
       <% end %>
-    </ul>
-  <% end %>
+    <% end %>
+    </div>
+
+    <div class='book-lists'>
+    <div class='book-index'>
+      <% @books.each do |book| %>
+        <div class='book-btn'>
+          <%= link_to book_schedules_path(book.id) do %>
+            <% if book && book.image.attached? %>
+            <%= image_tag book.image, class: 'book-img' %>
+            <% else %>
+              <%= image_tag "sample_飛行機.png", class:'book-img' %>
+            <% end %>
+            <div class='book-list'>
+            <div class='book-title'>
+              <% if book.publication == "open" %>
+                <%= image_tag "open-icon.png", class: "open-icon" %>
+              <% end %>
+              <%= book.title %>
+            </div>
+            <div class='book-start-end'>
+              <%= book.start %>
+              <% unless book.end == nil %>
+              <%= "～ " %><%= book.end %>
+              <% end %>
+            </div>
+            <div class='book-place'>
+              <%= book.place %>
+            </div>
+            </div>
+          <% end %>
+    
+          <% if user_signed_in? && current_user.id == book.user_id %>
+            <div class="book-setting">
+              <%= link_to image_tag("無料の設定歯車アイコン.png", class:"setting-icon"), book_path(book.id), method: :get %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= render "shared/footer" %>

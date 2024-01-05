@@ -41,7 +41,7 @@ class SchedulesController < ApplicationController
   private
   def schedule_params
     params.require(:schedule)
-    .permit(:summary, :date_time, :icon, :location, :departure, :arrival,
+    .permit(:image, :summary, :date_time, :icon, :location, :departure, :arrival,
       :departure_time, :arrival_time, :cost, :url1, :url2, :memo)
     .merge(user_id: current_user.id, book_id: params[:book_id])
   end

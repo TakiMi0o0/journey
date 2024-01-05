@@ -1,0 +1,104 @@
+/** 全体の設定 **/
+
+.book {
+  box-sizing: border-box;
+  font-family: 'cursive';
+  text-decoration: none;
+}
+
+
+/** 新規作成部分 **/
+.new-journey {
+  height: 10vh;
+  margin-top: 15vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.new-journey a{
+  text-decoration: none;
+}
+
+.new-journey-text {
+  color: #006888;
+}
+
+.new-journey-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/** 一覧部分 **/
+.book-btn {
+  width: 35vh;
+  height: 40vh;
+  margin: 20px;
+  position: relative;
+  
+}
+
+.book-btn a{
+  text-decoration: none;
+}
+
+.book-index {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 15px;
+  padding: 10px;
+  line-height: normal;
+}
+
+.book-img {
+  width: 35vh;
+  height: 40vh;
+  opacity: 70%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.open-icon {
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: center;
+  margin-top: 4px;
+  margin-left: 2px;
+
+}
+
+.book-list {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.book-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: calc(40vh - 15vh);
+  left: 5px;
+}
+
+.book-start-end {
+  margin: 2px;
+  font-size: 14px;
+}
+
+.book-place {
+  margin-left: 2px;
+  font-size: 14px;
+}
+
+/** 設定部分 **/
+.book-setting {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.setting-icon {
+  height: 20px;
+  width: 20px;
+}
