@@ -3,6 +3,6 @@ class Book < ApplicationRecord
   has_many :schedules
   has_one_attached :image
   
-  validates :title, :publication, presence: true
+  validates :title, :start, :publication, presence: true
   
 end

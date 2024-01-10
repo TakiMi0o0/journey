@@ -8,8 +8,8 @@
 }
 
 .footer {
-  height: 8vh;
-  width: 100vw;
+  height: 60px;
+  width: 100%;
   background-color: #fff799;
   display: flex;
   flex-direction: column;
@@ -20,11 +20,12 @@
 
 .journey-icon-footer {
   width: 130px;
-  margin-top: 8px;
+  margin-top: 7px;
 }
 
 .footer-message {
   color: #003f8e;
   font-size: 15px;
   font-family: 'Caveat', cursive;
+  margin-bottom: 10px;
 }

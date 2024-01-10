@@ -1,46 +1,67 @@
 <%= render "shared/header" %>
-<% if user_signed_in? && current_user.id == @book.user_id %>
-      <%= link_to(new_book_schedule_path, data: {"turbolinks" => false}, class: 'purchase-btn') do %>
-      <h2>予定を追加する</h2>
+
+<div class='schedules'>
+  <% if user_signed_in? && current_user.id == @book.user_id %>
+    <%= link_to(new_book_schedule_path, data: {"turbolinks" => false}, class: 'purchase-btn') do %>
+      <div class="new-schedule">予定を追加する</div>
     <% end %>
-    <% end %>
-  <ul class='schedule-lists'>
-  <% unless @schedules == nil %>
-  <% @schedules.each do |schedule| %>
-    <li class='list'>
-    <%= link_to book_schedule_path(schedule.book, schedule) do %>
-      <div class='schedule-info'>
-        <h3 class='schedule-summary'>
-          <%= schedule.summary %>
-        </h3>
-        <div class='schedule-date_time'>
-           <%= schedule.date_time %>
-         </div>
-        <div class='schedule-icon'>
-           <%= schedule.icon %>
-        </div>
-        <div class='schedule-location'>
-          <%= schedule.location %>
-        </div>
-        <div class='schedule-departure'>
-          <%= schedule.departure %>
-        </div>
-        <div class='schedule-arrival'>
-          <%= schedule.arrival %>
-        </div>
-        <div class='schedule-departure_time'>
-          <%= schedule.departure_time %>
-        </div>
-        <div class='schedule-arrival_time'>
-          <%= schedule.arrival_time %>
-        </div>
-        <div class='schedule-cost'>
-          <%= schedule.cost %>
-        </div>
+  <% end %>
+
+
+  <div class='schedule-index'>
+    <% @schedules.each do |schedule| %>
+      <div class='schedule-img-content'>
+        <% if schedule && schedule.image.attached? %>
+          <%= image_tag schedule.image, class: "schedule-img" %>
+        <% end %>
       </div>
-    </ul>
+
+
+          <div class='list'>
+          <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
+
+            <div class='schedule-info'>
+              <div class='schedule-date_time'>
+                <%= schedule.date_time %>
+              </div>
+              <div class='schedule-summary'>
+                <%= schedule.summary %>
+              </div>
+              <div class='schedule-icon'>
+                <%= schedule.icon %>
+              </div>
+              <div class='schedule-location'>
+                <%= schedule.location %>
+              </div>
+              <div class='schedule-departure'>
+                <%= schedule.departure %>
+              </div>
+              <div class='schedule-arrival'>
+                <%= schedule.arrival %>
+              </div>
+              <div class='schedule-departure_time'>
+                <%= schedule.departure_time %>
+              </div>
+              <div class='schedule-arrival_time'>
+                <%= schedule.arrival_time %>
+              </div>
+              <div class='schedule-cost'>
+                <%= schedule.cost %>
+             </div>
+              <div class='schedule-url1'>
+                <%= schedule.url1 %>
+              </div>
+              <div class='schedule-url2'>
+                <%= schedule.url2 %>
+              </div>
+              <div class='schedule-memo'>
+                <%= schedule.memo %>
+              </div>
+            </div>
+          <% end %>
+      </div>
     <% end %>
-  <% end %>
-  <% end %>
+  </div>
+</div>
 
 <%= render "shared/footer" %>

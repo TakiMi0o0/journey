@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
+  before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
-    @books = Book.all.order('created_at DESC')
+    @books = Book.all.order(start: 'DESC')
   end
 
   def new
@@ -13,13 +13,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to root_path
+      redirect_to book_schedules_path(@book)
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
   end
 
   def edit
@@ -27,7 +24,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to book_path
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end

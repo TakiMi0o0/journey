@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_092715) do
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "description"
-    t.date "start"
+    t.date "start", null: false
     t.date "end"
     t.string "place"
     t.string "publication", null: false

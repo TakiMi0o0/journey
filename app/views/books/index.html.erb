@@ -5,48 +5,51 @@
     <% if user_signed_in? %>
       <%= link_to(new_book_path, data: {"turbolinks" => false}) do %>
         <%= image_tag 'しおり付きの本のアイコン素材.png', class: "new-journey-icon" %>
-        <span class='new-journey-text'>次はどこへ行こうかな</span>
+        <span class='new-journey-text'>どこに行こう？</span>
       <% end %>
     <% end %>
-    </div>
+  </div>
 
-    <div class='book-lists'>
-    <div class='book-index'>
-      <% @books.each do |book| %>
-        <div class='book-btn'>
-          <%= link_to book_schedules_path(book.id) do %>
+  <div class='book-index'>
+    <% @books.each do |book| %>
+      <div class='books'>
+        <%= link_to book_schedules_path(book.id) do %>
+          <div class='book-btn'>
             <% if book && book.image.attached? %>
-            <%= image_tag book.image, class: 'book-img' %>
+              <%= image_tag book.image.variant(resize: '300x300'), class: 'book-img' %>
             <% else %>
               <%= image_tag "sample_飛行機.png", class:'book-img' %>
             <% end %>
             <div class='book-list'>
-            <div class='book-title'>
-              <% if book.publication == "open" %>
-                <%= image_tag "open-icon.png", class: "open-icon" %>
-              <% end %>
-              <%= book.title %>
+              <div class='book-title'>
+                <% if book.publication == "公開" %>
+                  <%= image_tag "open-icon.png", class: "open-icon" %>
+                <% end %>
+                <%= book.title %>
+              </div>
+              <div class='book-start-end'>
+                <%= book.start %>
+                <% unless book.end == nil %>
+                  <%= "～ " %><%= book.end %>
+                <% end %>
+              </div>
+              <div class='book-place'>
+                <%= book.place %>
+              </div>
+              <div class='book-description'>
+                <%= book.description %>
+              </div>
             </div>
-            <div class='book-start-end'>
-              <%= book.start %>
-              <% unless book.end == nil %>
-              <%= "～ " %><%= book.end %>
-              <% end %>
-            </div>
-            <div class='book-place'>
-              <%= book.place %>
-            </div>
-            </div>
-          <% end %>
-    
-          <% if user_signed_in? && current_user.id == book.user_id %>
-            <div class="book-setting">
-              <%= link_to image_tag("無料の設定歯車アイコン.png", class:"setting-icon"), book_path(book.id), method: :get %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+          </div>
+        <% end %>
+        <% if user_signed_in? && current_user.id == book.user_id %>
+          <div class="book-setting">
+            <%= link_to image_tag("無料の設定歯車アイコン.png", class:"setting-icon"), 
+              edit_book_path(book.id), method: :get %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
