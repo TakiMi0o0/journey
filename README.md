@@ -28,7 +28,7 @@
 
 ### Association
 
-- belongs_to :user
+- has_many :users
 - has_many :schedules
 - has_many :lists
 
@@ -36,15 +36,16 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| user             | references | null: false, foreign_key: true |
+| user_id          | integer    | null: false, foreign_key: true |
+| book_id          | integer    | null: false, foreign_key: true |
 | summary          | string     | null: false                    |
-| date_time        | date       | null: false                    |
+| date_time        | datetime   | null: false                    |
 | icon             | string     |                                |
 | location         | string     |                                |
 | departure        | string     |                                |
 | arrival          | string     |                                |
-| departure_time   | date       |                                |
-| arrival_time     | date       |                                |
+| departure_time   | datetime   |                                |
+| arrival_time     | datetime   |                                |
 | cost             | string     |                                |
 | url1             | string     |                                |
 | url2             | string     |                                |

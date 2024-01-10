@@ -1,0 +1,131 @@
+/** editと兼用 **/
+
+/** 全体 **/
+* {
+  box-sizing: border-box;
+  font-family: 'cursive';
+}
+
+.new {
+  box-sizing: border-box;
+  font-family: 'cursive';
+  width: 600px;
+  margin: auto;
+  border: 2px #e6eae6;
+  border-style: ridge;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.new-form-set {
+  margin: 20px;
+  color: #006888;
+  text-align: center;
+}
+
+.new-form {
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #006888;
+}
+
+span {
+  color: #d70035;
+  font-weight: bold;
+}
+
+
+/** 内容 **/
+::placeholder {
+  color: #bfbec5;
+}
+
+input[type="date"] {
+  padding: 3px 4px;
+}
+
+.new-book-title {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}
+
+.new-book-text {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  width: 250px;
+  height: 90px;
+  padding: 3px 4px;
+}
+
+.period {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  color: #bfbec5;
+}
+
+.place {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}
+
+.publication {
+  display: flex;
+  justify-content: center;
+}
+
+.close {
+  margin-right: 25px;
+}
+
+.radio-btn {
+  margin-bottom: 3px;
+}
+
+.hissu {
+  margin-left: 15px;
+  font-size: small;
+  text-align: center;
+}
+
+/** ボタン **/
+.upload-btn {
+
+}
+
+.new-btn {
+  width: 100px;
+  height: 50px;
+  border-style: none;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: bold;
+  color: #e73562;
+  background-color: #a1d8e6;
+  cursor: pointer;
+}
+
+.back-btn {
+  margin-left: 20px;
+  width: 100px;
+  height: 50px;
+  border-style: none;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: bold;
+  color: #abb1b5;
+  cursor: pointer;
+}
+
+.book-destroy {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.destroy-icon {
+  height: 30px;
+  width: 30px;
+}
