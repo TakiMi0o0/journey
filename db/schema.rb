@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_092715) do
     t.integer "book_id", null: false
     t.string "summary", null: false
     t.datetime "date_time", null: false
-    t.string "icon"
+    t.integer "icon_id"
     t.string "location"
     t.string "departure"
     t.string "arrival"

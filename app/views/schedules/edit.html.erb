@@ -1,33 +1,44 @@
 <%= render "shared/header" %>
 
-<div class="new">
-  <%= form_with(model: [@book, @schedule], url: book_schedule_path(@book, @schedule), method: :patch, local: true) do |f| %>
-    <div class="new-form-set">
-      <div class="new-form">
+<div class="format">
+  <%= form_with(model: [@book, @schedule], url: book_schedule_path(@book, @schedule), method: :patch, remote: true, id:'form_id') do |f| %>
+    <div class="form-set">
+      <div class="form">
         タイトル<span>*</span>
       </div>
       <%= f.text_field :summary, class:"schedule-summary", placeholder:"20文字まで", maxlength:"20" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
+    <div class="form-set">
+      <div class="form">
         日時<span>*</span>
       </div>
       <%= f.datetime_field :date_time, class:"schedule-text" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
-        アイコン
+
+    <div class="form-set">
+      <div class="form">
+        <%= f.label :icon_id, 'アイコン' %>
+        <div class="icon-select">
+          <%= f.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
+            <div class="radio-label">
+              <%= b.label { image_tag(b.object.image, class: 'icon-image') } %>
+            </div>
+            <div class="icon-radio-btn">
+              <%= b.radio_button %>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <%= f.text_field :icon, class:"icon" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
+
+    <div class="form-set">
+      <div class="form">
         場所
       </div>
       <%= f.text_field :location, class:"location" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
+    <div class="form-set">
+      <div class="form">
         出発～到着
       </div>
       <%= f.text_field :departure, class:"departure", placeholder:"出発地" %>
@@ -36,49 +47,49 @@
       <%= f.text_field :arrival, class:"arrival", placeholder:"到着地" %>
       <%= f.datetime_field :arrival_time, class:"period" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
+    <div class="form-set">
+      <div class="form">
         費用
       </div>
       <%= f.text_field :cost, class:"cost" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
+    <div class="form-set">
+      <div class="form">
         URL1
       </div>
       <%= f.text_field :url1, class:"url1" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
+    <div class="form-set">
+      <div class="form">
         URL2
       </div>
       <%= f.text_field :url2, class:"url2" %>
     </div>
-    <div class="new-form-set">
-      <div class="new-form">
+    <div class="form-set">
+      <div class="form">
         メモ
       </div>
       <%= f.text_area :memo, class:"memo" %>
     </div>
 
-    <div class="new-form-set">
-      <div class="new-form">
+    <div class="form-set">
+      <div class="form">
         イメージ
       </div>
       <div class="click-upload">
         <%= f.file_field :image, class:"upload-btn"%>
       </div>
     </div>
-    <div class="hissu">
+    <div class="required">
       <span>*</span>は必須項目です
     </div>
-    <div class="new-form-set">
-      <%= f.submit "変更！" ,class:"new-btn" %>
+    <div class="form-set">
+      <%= f.submit "変更" ,class:"submit-btn" %>
       <%= link_to 'もどる', book_schedules_path(@book), class:"back-btn" %>
     </div>
-    <div class="book-destroy">
+    <div class="destroy">
       <div title="予定を削除">
-        <%= link_to image_tag("ごみ箱のフリーアイコン.png", class:"destroy-icon"), 
+        <%= link_to image_tag("dustbin.png", class:"destroy-icon"), 
           book_schedule_path, data: { turbo_method: :delete }, method: :delete %>
       </div>
     </div>

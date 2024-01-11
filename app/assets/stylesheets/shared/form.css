@@ -1,15 +1,9 @@
-/** editと兼用 **/
-
 /** 全体 **/
-* {
-  box-sizing: border-box;
-  font-family: 'cursive';
-}
 
-.new {
+.format {
   box-sizing: border-box;
   font-family: 'cursive';
-  width: 600px;
+  width: 550px;
   margin: auto;
   border: 2px #e6eae6;
   border-style: ridge;
@@ -18,57 +12,54 @@
   position: relative;
 }
 
-.new-form-set {
+.form-set {
   margin: 20px;
   color: #006888;
   text-align: center;
 }
 
-.new-form {
+.form {
   margin-bottom: 4px;
   font-weight: bold;
   color: #006888;
 }
 
-span {
+.required {
+  font-size: 12px;
+  text-align: center;
+}
+
+span{
   color: #d70035;
   font-weight: bold;
 }
 
-
-/** 内容 **/
-::placeholder {
+::placeholder{
   color: #bfbec5;
 }
 
-input[type="date"] {
+input[type="date"]{
   padding: 3px 4px;
 }
 
-.new-book-title {
+
+/** しおり作成 **/
+
+.title,.description,.place {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
 }
 
-.new-book-text {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
+.description {
   width: 250px;
   height: 90px;
-  padding: 3px 4px;
 }
 
 .period {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   color: #bfbec5;
-}
-
-.place {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
-  padding: 3px 4px;
 }
 
 .publication {
@@ -80,27 +71,38 @@ input[type="date"] {
   margin-right: 25px;
 }
 
-.radio-btn {
+
+/** スケジュール作成 **/
+
+.summary,.location,.departure,.arrival,.cost,.url1,.url2,.memo {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}
+
+.date_time,.departure_time,.arrival_time {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  color: #bfbec5;
+}
+
+
+/** ボタン **/
+
+.publication-btn {
   margin-bottom: 3px;
 }
 
-.hissu {
-  margin-left: 15px;
-  font-size: small;
-  text-align: center;
-}
-
-/** ボタン **/
 .upload-btn {
 
 }
 
-.new-btn {
+.submit-btn {
   width: 100px;
   height: 50px;
   border-style: none;
   border-radius: 10px;
-  font-size: large;
+  font-size: 24px;
   font-weight: bold;
   color: #e73562;
   background-color: #a1d8e6;
@@ -113,13 +115,13 @@ input[type="date"] {
   height: 50px;
   border-style: none;
   border-radius: 10px;
-  font-size: large;
+  font-size: 24px;
   font-weight: bold;
   color: #abb1b5;
   cursor: pointer;
 }
 
-.book-destroy {
+.destroy {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -128,4 +130,27 @@ input[type="date"] {
 .destroy-icon {
   height: 30px;
   width: 30px;
+}
+
+
+/** アイコン **/
+
+.icon-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.icon-radio-btn {
+  display: none;
+}
+
+.icon-image {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-image:hover {
+  cursor: pointer;
 }

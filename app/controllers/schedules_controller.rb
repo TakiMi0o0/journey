@@ -15,6 +15,7 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to book_schedules_path
     else
+      logger.error @schedule.errors.full_messages.join(', ')
       render :new, status: :unprocessable_entity
     end
   end
@@ -39,7 +40,7 @@ class SchedulesController < ApplicationController
   private
   def schedule_params
     params.require(:schedule)
-    .permit(:image, :summary, :date_time, :icon, :location, :departure, :arrival,
+    .permit(:image, :summary, :date_time, :icon_id, :location, :departure, :arrival,
       :departure_time, :arrival_time, :cost, :url1, :url2, :memo)
     .merge(user_id: current_user.id, book_id: params[:book_id])
   end

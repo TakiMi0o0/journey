@@ -5,7 +5,7 @@ class CreateSchedules < ActiveRecord::Migration[7.0]
       t.integer    :book_id,        null: false, foreign_key: true
       t.string     :summary,        null: false
       t.datetime   :date_time,      null: false
-      t.string     :icon
+      t.integer    :icon_id
       t.string     :location
       t.string     :departure
       t.string     :arrival
