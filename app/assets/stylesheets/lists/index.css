@@ -1,0 +1,10 @@
+.list {
+  box-sizing: border-box;
+  width: 550px;
+  margin: auto;
+  border: 2px #e6eae6;
+  border-style: ridge;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}

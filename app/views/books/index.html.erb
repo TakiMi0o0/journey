@@ -4,7 +4,7 @@
   <div class='new-journey'>
     <% if user_signed_in? %>
       <%= link_to(new_book_path, data: {"turbolinks" => false}) do %>
-        <%= image_tag 'bookmark.png', class: "new-journey-icon" %>
+        <%= image_tag 'book.png', class: "new-journey-icon" %>
         <span class='new-journey-text'>New Journey</span>
       <% end %>
     <% end %>

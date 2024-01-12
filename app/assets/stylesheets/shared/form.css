@@ -43,50 +43,6 @@ input[type="date"]{
 }
 
 
-/** しおり作成 **/
-
-.title,.description,.place {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
-  padding: 3px 4px;
-}
-
-.description {
-  width: 250px;
-  height: 90px;
-}
-
-.period {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
-  color: #bfbec5;
-}
-
-.publication {
-  display: flex;
-  justify-content: center;
-}
-
-.close {
-  margin-right: 25px;
-}
-
-
-/** スケジュール作成 **/
-
-.summary,.location,.departure,.arrival,.cost,.url1,.url2,.memo {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
-  padding: 3px 4px;
-}
-
-.date_time,.departure_time,.arrival_time {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
-  color: #bfbec5;
-}
-
-
 /** ボタン **/
 
 .publication-btn {
@@ -133,7 +89,86 @@ input[type="date"]{
 }
 
 
-/** アイコン **/
+/** しおり作成 **/
+
+.title,.description,.place {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}
+
+.description {
+  width: 250px;
+  height: 90px;
+}
+
+.period {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  color: #bfbec5;
+}
+
+.publication {
+  display: flex;
+  justify-content: center;
+}
+
+.close {
+  margin-right: 25px;
+}
+
+
+/** スケジュール作成 **/
+
+.summary,.departure,.arrival,
+.departure2,.arrival2,.departure3,.arrival3,
+.departure4,.arrival4,.cost,.url,.url2,.memo {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}
+
+.departure_time,.arrival_time,
+.departure_time2,.arrival_time2,
+.departure_time3,.arrival_time3,
+.departure_time4,.arrival_time4 {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  color: #bfbec5;
+}
+
+.add-forms label {
+  width: 40px;
+  display: block;
+  padding : 3px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+  background: #bfbec5;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.add-forms input[type="checkbox"] {
+  display: none;
+}
+
+.add-form {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 5px;
+  margin: auto;
+}
+
+.switch:checked + .add-form {
+  height: auto;
+  padding: 3px;
+}
+
+/** スケジュールアイコン **/
 
 .icon-select {
   display: flex;
@@ -153,4 +188,13 @@ input[type="date"]{
 
 .icon-image:hover {
   cursor: pointer;
+}
+
+
+/** リスト作成 **/
+
+.category,.content,.quantity,.price,.list_memo {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
 }

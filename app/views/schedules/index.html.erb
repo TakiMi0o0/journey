@@ -1,24 +1,45 @@
 <%= render "shared/header" %>
 
+
 <div class='schedules'>
   <div class='new-schedules'>
     <% if user_signed_in? && current_user.id == @book.user_id %>
       <%= link_to(new_book_schedule_path, data: {"turbolinks" => false}) do %>
-        <%= image_tag 'bookmark.png', class: "new-schedule-icon" %>
+        <%= image_tag 'schedule.png', class: "new-schedule-icon" %>
       <% end %>
     <% end %>
   </div>
 
+  <div class='list-tab'>
+    <div class='new-list'>
+      <% if user_signed_in? && current_user.id == @book.user_id %>
+        <%= link_to(new_book_list_path, data: {"turbolinks" => false}) do %>
+          <%= image_tag 'list.png', class: "new-list-icon" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class='category-index'>
+      <% @lists.each do |list| %>
+        <%= link_to book_lists_path(@book.id) do %>
+          <div class='category-list'>
+            <%= list.category %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 
   <div class='schedule-index'>
-    <% grouped_schedules = @schedules.group_by { |schedule| (schedule.date_time.to_date - @book.start.to_date).to_i + 1 } %>
+    <% grouped_schedules = @schedules.group_by { |schedule| (schedule.departure_time.to_date - @book.start.to_date).to_i + 1 } %>
     <% grouped_schedules.each do |day, schedules_for_day| %>
       <div class='date-group'>
         <div class='day'>
-          <%= day %> 日目
+          DAY <%= day %>
         </div>
         <div class='date'>
-          <%= schedules_for_day.first.date_time.strftime('%m/%d') if schedules_for_day.any? %>
+          <%= schedules_for_day.first.departure_time.strftime('%m/%d (%a)') if schedules_for_day.any? %>
         </div>
       </div>
 
@@ -29,9 +50,10 @@
           <% end %>
         </div>
 
-        <div class='list'>
+        <div class='schedule-list'>
           <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
             <div class='schedule-info'>
+
               <div class="schedule-main">
                 <div class='schedule-icon'>
                   <% if schedule.icon.is_a?(Icon) && schedule.icon.id != 0 %>
@@ -39,15 +61,6 @@
                   <% elsif schedule.icon.is_a?(String) && schedule.icon != "0" %>
                     <%= image_tag schedule.icon, class: "icon-image" %>
                   <% end %>
-                </div>
-
-                <div class="date_time-location">
-                  <div class='schedule-date_time'>
-                    <%= schedule.date_time.strftime('%H:%M') %>
-                  </div>
-                  <div class='schedule-location'>
-                    <%= schedule.location %>
-                  </div>
                 </div>
 
                 <div class='schedule-summary'>
@@ -58,43 +71,128 @@
                 </div>
               </div>
 
-              <% if schedule.departure_time.present? || schedule.arrival_time.present? || schedule.departure.present? || schedule.arrival.present? %>
-                <div class="schedule-sub1">
-                  <div class="departure-arrival_time">
-                    <div class='schedule-departure_time'>
-                      <%= schedule.departure_time&.strftime('%H:%M') %>
-                    </div>
+              <div class="schedule-sub">
+                <div class="departure-arrival_time">
+                  <div class='schedule-departure_time'>
+                    <%= schedule.departure_time&.strftime('%H:%M') %>
+                  </div>
+                  <div class='schedule-arrival_time'>
                     <% if schedule.arrival_time.present? %>
                       <%= "-" %>
                     <% end %>
-                    <div class='schedule-arrival_time'>
-                      <%= schedule.arrival_time&.strftime('%H:%M') %>
-                    </div>
+                    <%= schedule.arrival_time&.strftime('%H:%M') %>
                   </div>
-
-                  <div class="departure-arrival">
-                    <div class='schedule-departure'>
-                      <%= schedule.departure %>
-                    </div>
+                </div>
+                <div class="departure-arrival">
+                  <div class='schedule-departure'>
+                    <%= schedule.departure %>
+                  </div>
+                  <div class='schedule-arrival'>
                     <% if schedule.arrival.present? %>
                       <%= "～" %>
                     <% end %>
-                    <div class='schedule-arrival'>
-                      <%= schedule.arrival %>
+                    <%= schedule.arrival %>
+                  </div>
+                </div>
+              </div>
+
+
+              <% if schedule.departure_time2.present? || schedule.arrival_time2.present? || schedule.departure2.present? || schedule.arrival2.present? %>
+                <div class="schedule-sub2">
+                  <div class="schedule-time">
+                    <div class="departure-arrival_time">
+                      <div class='schedule-departure_time'>
+                        <%= schedule.departure_time2&.strftime('%H:%M') %>
+                      </div>
+                      <div class='schedule-arrival_time'>
+                        <% if schedule.arrival_time2.present? %>
+                          <%= "-" %>
+                        <% end %>
+                        <%= schedule.arrival_time2&.strftime('%H:%M') %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="schedule-location">
+                    <div class="departure-arrival">
+                      <div class='schedule-departure'>
+                        <%= schedule.departure2 %>
+                      </div>
+                      <div class='schedule-arrival'>
+                        <% if schedule.arrival2.present? %>
+                          <%= "～" %>
+                        <% end %>
+                        <%= schedule.arrival2 %>
+                      </div>
                     </div>
                   </div>
                 </div>
               <% end %>
 
-              <% if schedule.url1.present? || schedule.url2.present? || schedule.memo.present? %>
+              <% if schedule.departure_time3.present? || schedule.arrival_time3.present? || schedule.departure3.present? || schedule.arrival3.present? %>
                 <div class="schedule-sub2">
+                  <div class="departure-arrival_time">
+                    <div class='schedule-departure_time'>
+                      <%= schedule.departure_time3&.strftime('%H:%M') %>
+                    </div>
+                    <div class='schedule-arrival_time'>
+                      <% if schedule.arrival_time3.present? %>
+                        <%= "-" %>
+                      <% end %>
+                      <%= schedule.arrival_time3&.strftime('%H:%M') %>
+                    </div>
+                  </div>
+
+                  <div class="departure-arrival">
+                    <div class='schedule-departure'>
+                      <%= schedule.departure3 %>
+                    </div>
+                    <div class='schedule-arrival'>
+                      <% if schedule.arrival3.present? %>
+                        <%= "～" %>
+                      <% end %>
+                      <%= schedule.arrival3 %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+
+              <% if schedule.departure_time4.present? || schedule.arrival_time4.present? || schedule.departure4.present? || schedule.arrival4.present? %>
+                <div class="schedule-sub2">
+                  <div class="departure-arrival_time">
+                    <div class='schedule-departure_time'>
+                      <%= schedule.departure_time4&.strftime('%H:%M') %>
+                    </div>
+                    <div class='schedule-arrival_time'>
+                      <% if schedule.arrival_time4.present? %>
+                        <%= "-" %>
+                      <% end %>
+                      <%= schedule.arrival_time4&.strftime('%H:%M') %>
+                    </div>
+                  </div>
+
+                  <div class="departure-arrival">
+                    <div class='schedule-departure'>
+                      <%= schedule.departure4 %>
+                    </div>
+                    <div class='schedule-arrival'>
+                      <% if schedule.arrival4.present? %>
+                        <%= "～" %>
+                      <% end %>
+                      <%= schedule.arrival4 %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+
+              <% if schedule.memo.present? || schedule.url.present? || schedule.url2.present? %>
+                <div class='schedule-sub3'>
                   <div class='schedule-memo'>
                     <%= schedule.memo %>
                   </div>
-                  <div class='schedule-url1'>
-                    <% if schedule.url1.present? %>
+                  <div class='schedule-url'>
+                    <% if schedule.url.present? %>
                       <%= link_to image_tag("url.png", class:"url-icon"), 
-                        schedule.url1, data: {"turbolinks" => false} %>
+                        schedule.url, data: {"turbolinks" => false} %>
                     <% end %>
                   </div>
                   <div class='schedule-url2'>
@@ -106,8 +204,8 @@
                 </div>
               <% end %>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
   </div>

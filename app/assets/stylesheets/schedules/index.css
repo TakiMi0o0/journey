@@ -1,12 +1,11 @@
 /** 全体の設定 **/
 
-.schedules{
+.schedules {
   box-sizing: border-box;
-  font-family: 'cursive';
   width: 550px;
   margin: auto;
-  border: 2px #e6eae6;
-  border-style: ridge;
+  border: 10px #e6eae6;
+  border-style: groove;
   border-radius: 10px;
   padding: 20px;
   position: relative;
@@ -17,13 +16,49 @@
 
 .new-schedules {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 80px;
+  left: 100%;
 }
 
 .new-schedule-icon {
-  width: 40px;
+  width: 70px;
   height: 40px;
+}
+
+.new-list-icon {
+  width: 75px;
+  height: 45px;
+}
+
+
+/** リスト部分 **/
+
+.list-tab {
+  display: block;
+}
+
+.new-list {
+  position: absolute;
+  top: 200px;
+  left: 100%;
+}
+
+.category-index {
+  position: absolute;
+  top: 300px;
+  left: 100%;
+}
+
+.category-list {
+  text-decoration: none;
+  white-space: nowrap;
+  margin-bottom: 40px;
+  padding: 15px;
+  border: 2px #7d7d7d;
+  border-radius: 0 10px 10px 0;
+  background-color: #7d7d7d;
+  color: #fff;
+  font-weight: bold;
 }
 
 
@@ -49,135 +84,132 @@
 .date-group {
   display: flex;
   margin: 2px;
+  padding: 16px;
+  position: sticky;
+  top: 60px;
+}
+
+.day,.date {
+  font-size: 16px;
+  font-family: 'Caveat', cursive;
+
 }
 
 .day {
-  font-size: 16px;
-  font-weight: bold;
-  color: #941f57;
+  color: #192f60;
+  background-color: #fff3b8;
 }
 
 .date {
-  font-size: 14px;
-  font-weight: bold;
+  background-color: #fff3b8;
   color: #e62f8b;
   margin: auto;
 }
 
-.list {
+.schedule-list {
 
 }
 
 .schedule-info {
   display: block;
-  margin: 5px 0;
+  margin: 10px 0;
   border: 2px #e6eae6;
   border-style: ridge;
   border-radius: 10px;
 }
 
-.schedule-main,.schedule-sub1,.schedule-sub2 {
+.schedule-main,.schedule-sub,.schedule-sub2,.schedule-sub3 {
   display: flex;
-  padding: 5px;
+  padding: 4px 10px;
 }
 
 .schedule-main {
-  height: 50px;
+  height: 35px;
 }
 
-.schedule-sub1 {
-  height: 25px;
+.schedule-sub,.schedule-sub2,.schedule-sub3 {
+  height: 22px;
 }
 
-.schedule-sub2 {
-  height: 25px;
-  justify-content: space-between;
+.schedule-sub3 {
   align-items: center;
-  padding: 5px;
-}
-
-
-/** 中身 **/
-
-.schedule-icon {
-  width: 35px;
-  height: 35px;
-  padding: 2px;
-}
-
-.schedule-icon img {
-  width: 35px;
-  height: 35px;
-}
-
-.date_time-location {
-  margin: 2px 7px;
-}
-
-.schedule-date_time {
-  font-size: 14px;
-  font-weight: bold;
-  margin: 2px;
-  color: #e62f8b;
-}
-
-.schedule-location {
-  font-size: 12px;
-  margin: 5px;
-  color: #941f57;
-}
-
-.schedule-summary {
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 5px;
-  color: #941f57;
-}
-
-.schedule-cost {
-  margin-left: auto;
-  font-size: 12px;
-  color: #00608d;
-}
-
-.departure-arrival_time {
-  display: flex;
-  font-size: 12px;
-  color: #e62f8b;
-}
-
-.schedule-departure_time {
-  margin-right: 2px;
-}
-
-.schedule-arrival_time {
-  margin-left: 2px;
-}
-
-.departure-arrival {
-  display: flex;
-  margin-left: 10px;
-  font-size: 14px;
-  color: #941f57;
-}
-
-.schedule-departure {
-  margin-right: 5px;
-}
-
-.schedule-arrival {
-  margin-left: 5px;
 }
 
 .schedule-memo {
   font-size: 12px;
-  color: #941f57;
+  color: #192f60;
+  margin-left: 60px;
 }
 
-.schedule-url1,.schedule-url2 {
+.schedule-url {
+  margin-left: auto;
 }
 
 .url-icon {
   width: 20px;
   height: 20px;
 }
+
+.departure-arrival_time,.departure-arrival {
+  display: flex;
+  align-items: center;
+}
+
+
+/** 中身 **/
+
+.schedule-icon {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.schedule-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.schedule-summary {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 40px;
+  color: #192f60;
+  line-height: 30px;
+}
+
+.schedule-cost {
+  margin-left: auto;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #00608d;
+}
+
+.schedule-departure_time {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e62f8b;
+  margin-right: 2px;
+}
+
+.departure-arrival_time {
+  display: flex;
+  font-size: 12px;
+  color: #192f60;
+}
+
+.schedule-arrival_time {
+  margin-left: 2px;
+}
+
+.schedule-departure,.schedule-arrival {
+  font-size: 12px;
+  color: #192f60;
+  margin-left: 5px;
+}
+
+.departure-arrival {
+  display: flex;
+  margin-left: 10px;
+}
+

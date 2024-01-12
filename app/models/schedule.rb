@@ -6,5 +6,7 @@ class Schedule < ApplicationRecord
 
   has_one_attached :image
 
-  validates :summary, :date_time, presence: true
+  validates :summary, :departure_time, presence: true
+
+
 end

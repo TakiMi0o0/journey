@@ -1,8 +1,8 @@
 /** 全体の設定 **/
 
-.book {
+* {
   box-sizing: border-box;
-  font-family: 'cursive';
+  font-family: 'monospace';
 }
 
 
@@ -92,7 +92,7 @@
 }
 
 .book-place,.book-description,.book-start-end {
-  font-size: 12px;
+  font-size: 14px;
   color: #626063;
   line-height: 16px;
 }
@@ -103,6 +103,7 @@
 
 .book-description {
   margin: 5px;
+  width: 220px;
 }
 
 .book-start-end {

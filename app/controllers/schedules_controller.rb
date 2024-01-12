@@ -3,7 +3,8 @@ class SchedulesController < ApplicationController
   before_action :schedule_find, only: [:edit, :update, :destroy]
 
   def index
-    @schedules = @book.schedules.order(date_time: 'ASC')
+    @schedules = @book.schedules.order(departure_time: 'ASC')
+    @lists = @book.lists
   end
 
   def new
@@ -15,7 +16,6 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to book_schedules_path
     else
-      logger.error @schedule.errors.full_messages.join(', ')
       render :new, status: :unprocessable_entity
     end
   end
@@ -40,8 +40,11 @@ class SchedulesController < ApplicationController
   private
   def schedule_params
     params.require(:schedule)
-    .permit(:image, :summary, :date_time, :icon_id, :location, :departure, :arrival,
-      :departure_time, :arrival_time, :cost, :url1, :url2, :memo)
+    .permit(:image, :summary, :icon_id, :departure, :arrival,
+      :departure_time, :arrival_time, :departure2, :arrival2,
+      :departure_time2, :arrival_time2, :departure3, :arrival3,
+      :departure_time3, :arrival_time3, :departure4, :arrival4,
+      :departure_time4, :arrival_time4,:cost, :url, :url2, :memo)
     .merge(user_id: current_user.id, book_id: params[:book_id])
   end
 

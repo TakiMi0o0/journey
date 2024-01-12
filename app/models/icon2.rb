@@ -1,4 +1,4 @@
-class Icon < ActiveHash::Base
+class Icon2 < ActiveHash::Base
   self.data = [
     { id: 0, image: 'icon_noselect.png' },
     { id: 1, image: 'icon_walk.png' },
@@ -30,4 +30,3 @@ class Icon < ActiveHash::Base
   has_many :schedules
 
 end
-
