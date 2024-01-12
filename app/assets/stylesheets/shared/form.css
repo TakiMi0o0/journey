@@ -1,0 +1,200 @@
+/** 全体 **/
+
+.format {
+  box-sizing: border-box;
+  font-family: 'cursive';
+  width: 550px;
+  margin: auto;
+  border: 2px #e6eae6;
+  border-style: ridge;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.form-set {
+  margin: 20px;
+  color: #006888;
+  text-align: center;
+}
+
+.form {
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #006888;
+}
+
+.required {
+  font-size: 12px;
+  text-align: center;
+}
+
+span{
+  color: #d70035;
+  font-weight: bold;
+}
+
+::placeholder{
+  color: #bfbec5;
+}
+
+input[type="date"]{
+  padding: 3px 4px;
+}
+
+
+/** ボタン **/
+
+.publication-btn {
+  margin-bottom: 3px;
+}
+
+.upload-btn {
+
+}
+
+.submit-btn {
+  width: 100px;
+  height: 50px;
+  border-style: none;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #e73562;
+  background-color: #a1d8e6;
+  cursor: pointer;
+}
+
+.back-btn {
+  margin-left: 20px;
+  width: 100px;
+  height: 50px;
+  border-style: none;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #abb1b5;
+  cursor: pointer;
+}
+
+.destroy {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.destroy-icon {
+  height: 30px;
+  width: 30px;
+}
+
+
+/** しおり作成 **/
+
+.title,.description,.place {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}
+
+.description {
+  width: 250px;
+  height: 90px;
+}
+
+.period {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  color: #bfbec5;
+}
+
+.publication {
+  display: flex;
+  justify-content: center;
+}
+
+.close {
+  margin-right: 25px;
+}
+
+
+/** スケジュール作成 **/
+
+.summary,.departure,.arrival,
+.departure2,.arrival2,.departure3,.arrival3,
+.departure4,.arrival4,.cost,.url,.url2,.memo {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}
+
+.departure_time,.arrival_time,
+.departure_time2,.arrival_time2,
+.departure_time3,.arrival_time3,
+.departure_time4,.arrival_time4 {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  color: #bfbec5;
+}
+
+.add-forms label {
+  width: 40px;
+  display: block;
+  padding : 3px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+  background: #bfbec5;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.add-forms input[type="checkbox"] {
+  display: none;
+}
+
+.add-form {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 5px;
+  margin: auto;
+}
+
+.switch:checked + .add-form {
+  height: auto;
+  padding: 3px;
+}
+
+/** スケジュールアイコン **/
+
+.icon-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.icon-radio-btn {
+  display: none;
+}
+
+.icon-image {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-image:hover {
+  cursor: pointer;
+}
+
+
+/** リスト作成 **/
+
+.category,.content,.quantity,.price,.list_memo {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+}

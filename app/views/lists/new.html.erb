@@ -1,0 +1,45 @@
+<%= render "shared/header" %>
+
+<div class="format">
+  <%= form_with(model: @list, url: book_lists_path(@book)) do |f| %>
+    <div class="form-set">
+      <div class="form">
+        カテゴリー<span>*</span>
+      </div>
+      <%= f.text_field :category, class:"category", placeholder:"10文字まで", maxlength:"10" %>
+    </div>
+    <div class="form-set">
+      <div class="form">
+        内容<span>*</span>
+      </div>
+      <%= f.text_field :content, class:"content", placeholder:"15文字まで", maxlength:"15" %>
+    </div>
+    <div class="form-set">
+      <div class="form">
+        数量
+      </div>
+      <%= f.text_field :quantity, class:"quantity" %>
+    </div>
+    <div class="form-set">
+      <div class="form">
+        金額
+      </div>
+      <%= f.text_field :price, class:"price" %>
+    </div>
+    <div class="form-set">
+      <div class="form">
+        メモ
+      </div>
+      <%= f.text_area :list_memo, class:"list_memo"%>
+    </div>
+    <div class="required">
+      <span>*</span>は必須項目です
+    </div>
+    <div class="form-set">
+      <%= f.submit "追加" ,class:"submit-btn" %>
+      <%=link_to 'もどる', book_schedules_path(@book), class:"back-btn" %>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>

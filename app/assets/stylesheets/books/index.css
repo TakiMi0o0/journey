@@ -1,11 +1,8 @@
 /** 全体の設定 **/
+
 * {
   box-sizing: border-box;
-  font-family: 'cursive';
-}
-.book {
-  box-sizing: border-box;
-  font-family: 'cursive';
+  font-family: 'monospace';
 }
 
 
@@ -15,8 +12,6 @@
   height: 10vh;
   margin-top: 15vh;
   text-align: center;
-  font-size: 22px;
-  font-weight: bold;
 }
 
 .new-journey a{
@@ -25,6 +20,9 @@
 
 .new-journey-text {
   color: #043c78;
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .new-journey-icon {
@@ -38,37 +36,41 @@
 .book-index {
   display: flex;
   flex-wrap: wrap;
-  margin: 10px 30px;
 }
 
 .books {
-  width: 20vw;
-  height: 35vh;
+  width: 250px;
+  height: 300px;
   position: relative;
-  border-radius: 20px;
-  margin: auto;
-  margin-bottom: 30px;
+  border-radius: 12px;
+  margin: 20px;
 }
 
 .book-btn {
   width: 100%;
   height: 100%;
-  border-radius: 20px;
 }
 
 .book-btn a{
   text-decoration: none;
+}
+
+.book-cover {
+  width: 250px;
+  height: 300px;
 
 }
 
 .book-img {
-  width: 20vw;
+  width: 250px;
   height: 100%;
   opacity: 50%;
-  object-position: 0 0;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 12px;
 }
+
+
+/** 中身 **/
 
 .open-icon {
   width: 15px;
@@ -77,34 +79,37 @@
   margin-left: 2px;
 }
 
+.book-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #043c78;
+  margin-left: 5px;
+}
+
 .book-list {
   position: absolute;
-  top: calc(40vh - 35vh);
-  left: 10px;
+  top: 14px;
 }
 
-.book-title {
-  font-size: 20px;
-  color: #043c78;
-  font-weight: bold;
-}
-
-.book-start-end {
-  margin-top: 15px;
+.book-place,.book-description,.book-start-end {
   font-size: 14px;
   color: #626063;
+  line-height: 16px;
 }
 
 .book-place {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #626063;
+  margin: 10px 15px 50px;
 }
 
 .book-description {
-  margin-top: 20px;
-  font-size: 12px;
-  color: #626063;
+  margin: 5px;
+  width: 220px;
+}
+
+.book-start-end {
+  position: absolute;
+  bottom: calc(35vh - 34vh);
+  left: 5px;
 }
 
 
@@ -112,7 +117,7 @@
 
 .book-setting {
   position: absolute;
-  top: 8px;
+  bottom: 8px;
   right: 8px;
 }
 

@@ -13,6 +13,8 @@
 - has_many :books
 - has_many :schedules
 - has_many :lists
+- has_many :locations
+
 
 ## books テーブル
 
@@ -21,7 +23,7 @@
 | user             | references | null: false, foreign_key: true |
 | title            | string     | null: false                    |
 | description      | text       |                                |
-| start            | date       |                                |
+| start            | date       | null: false                    |
 | end              | date       |                                |
 | place            | string     |                                |
 | publication      | string     | null: false                    |
@@ -32,20 +34,16 @@
 - has_many :schedules
 - has_many :lists
 
+
 ## schedules テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| user_id          | integer    | null: false, foreign_key: true |
-| book_id          | integer    | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
+| book             | references | null: false, foreign_key: true |
 | summary          | string     | null: false                    |
-| date_time        | datetime   | null: false                    |
-| icon             | string     |                                |
-| location         | string     |                                |
-| departure        | string     |                                |
-| arrival          | string     |                                |
-| departure_time   | datetime   |                                |
-| arrival_time     | datetime   |                                |
+| departure_time   | datetime   | null: false                    |
+| icon_id          | integer    |                                |
 | cost             | string     |                                |
 | url1             | string     |                                |
 | url2             | string     |                                |
@@ -53,23 +51,41 @@
 
 ### Association
 
-- belongs_to :user
 - belongs_to :book
-- has_many :lists
+- has_many :users
+- has_many :locations
+
+
+## locations テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| schedule         | references | null: false, foreign_key: true |
+| departure_time2  | datetime   |                                |
+| arrival_time     | datetime   |                                |
+| departure        | string     |                                |
+| arrival          | string     |                                |
+| icon_id          | integer    |                                |
+
+### Association
+
+- belongs_to :schedule
+- has_many :users
+
 
 ## lists テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
+| book          | references | null: false, foreign_key: true |
+| category      | string     | null: false                    |
 | content       | string     | null: false                    |
 | quantity      | integer    |                                |
 | price         | integer    |                                |
-| category_id   | integer    | null: false                    |
 | list_memo     | text       |                                |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :book
-- belongs_to :schedule
+- has_many :users

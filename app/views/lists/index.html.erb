@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+
+<div class='list'>
+  <div class='list-tab'>
+    <% if user_signed_in? && current_user.id == @book.user_id %>
+      <%= link_to(new_book_list_path, data: {"turbolinks" => false}) do %>
+        <%= image_tag 'list.png', class: "new-schedule-icon" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class='list-index'>
+    <% @lists.group_by(&:category).each do |category, lists| %>
+      <div class='list-category'>
+        <h3><%= category %></h3>
+          <% lists.each do |list| %>
+            <div class='lists'>
+              <%= link_to edit_book_list_path(list.book, list) do %>
+                <div class='list-content'>
+                  <%= list.content %>
+                </div>
+                <div class='list-quantity'>
+                  <%= list.quantity %>
+                </div>
+                <div class='list-price'>
+                  <%= list.price %>
+                </div>
+                <div class='list_memo'>
+                  <%= list.list_memo %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>
