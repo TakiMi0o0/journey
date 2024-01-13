@@ -2,20 +2,22 @@
 
 
 <div class='schedules'>
+  <div class="book-btn">
+    <%= link_to 'もどる', root_path %>
+  </div>
+
   <div class='new-schedules'>
-    <% if user_signed_in? && current_user.id == @book.user_id %>
-      <%= link_to(new_book_schedule_path, data: {"turbolinks" => false}) do %>
-        <%= image_tag 'schedule.png', class: "new-schedule-icon" %>
+    <div class='new-schedule-btn'>
+      <% if user_signed_in? && current_user.id == @book.user_id %>
+        <%= link_to '予定作成', new_book_schedule_path, data: {"turbolinks" => false} %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
   <div class='list-tab'>
     <div class='new-list'>
       <% if user_signed_in? && current_user.id == @book.user_id %>
-        <%= link_to(new_book_list_path, data: {"turbolinks" => false}) do %>
-          <%= image_tag 'list.png', class: "new-list-icon" %>
-        <% end %>
+        <%= link_to 'リスト作成', new_book_list_path, data: {"turbolinks" => false} %>
       <% end %>
     </div>
 

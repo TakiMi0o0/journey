@@ -11,23 +11,26 @@
   position: relative;
 }
 
+.book-btn a{
+  font-size: 18px;
+  font-weight: bold;
+
+  color: #192f60;
+  line-height: 30px;
+}
+
 
 /** 新規作成部分 **/
 
 .new-schedules {
+  position: sticky;
+  top: 40px;
+}
+
+.new-schedule-btn {
   position: absolute;
-  top: 80px;
-  left: 100%;
-}
-
-.new-schedule-icon {
-  width: 70px;
-  height: 40px;
-}
-
-.new-list-icon {
-  width: 75px;
-  height: 45px;
+  top: 40px;
+  left: calc(100% + 24px);
 }
 
 
@@ -35,25 +38,26 @@
 
 .list-tab {
   display: block;
+  position: sticky;
+  top: 40px;
 }
 
 .new-list {
   position: absolute;
-  top: 200px;
-  left: 100%;
+  top: 140px;
+  left: calc(100% + 24px);
 }
 
 .category-index {
   position: absolute;
-  top: 300px;
-  left: 100%;
+  top: 200px;
+  left: calc(100% + 24px);
 }
 
-.category-list {
-  text-decoration: none;
+.category-list,.new-schedule-btn,.new-list {
   white-space: nowrap;
-  margin-bottom: 40px;
-  padding: 15px;
+  margin-bottom: 10px;
+  padding: 15px 15px 15px 5px;
   border: 2px #7d7d7d;
   border-radius: 0 10px 10px 0;
   background-color: #7d7d7d;
@@ -61,6 +65,15 @@
   font-weight: bold;
 }
 
+.new-schedule-btn,.new-list {
+  border-style: double;
+}
+
+.new-schedule-btn a,.new-list a{
+  color: #fff;
+  font-weight: bold;
+
+}
 
 /** 画像 **/
 
@@ -175,6 +188,10 @@
   margin-left: 40px;
   color: #192f60;
   line-height: 30px;
+}
+
+.schedule-summary::before {
+  height: 1000px;
 }
 
 .schedule-cost {
