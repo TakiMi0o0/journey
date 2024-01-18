@@ -1,0 +1,113 @@
+<div class="form-set">
+  <div class="form">
+    タイトル<span>*</span>
+  </div>
+  <%= s.text_field :summary, class:"summary", placeholder:"20文字まで", maxlength:"20" %>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    出発～到着
+  </div>
+  <%= s.datetime_field :departure_time, value: @book.start.strftime('%Y-%m-%dT%H:%M:%S'), class:"period" %>
+  <span>*</span>～
+  <%= s.datetime_field :arrival_time, value: (s.object.arrival_time || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
+  <%= s.text_field :departure, class:"departure", placeholder:"出発地" %>
+  ～
+  <%= s.text_field :arrival, class:"arrival", placeholder:"到着地" %>
+</div>
+
+<%= s.fields_for :locations do |l| %>
+  <div class="add-forms">
+    <label for="label">＋</label>
+    <input type="checkbox" id="label" class="switch" />
+    <div class="add-form">
+      <div class="form-set">
+        <div class="form">
+          出発～到着
+        </div>
+      
+        <%= l.datetime_field :departure_time2, value: (l.object.departure_time2 || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
+        ～
+        <%= l.datetime_field :arrival_time2, value: (l.object.arrival_time2 || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
+        <%= l.text_field :departure2, class:"departure2", placeholder:"出発地" %>
+        ～
+        <%= l.text_field :arrival2, class:"arrival2", placeholder:"到着地" %>
+        <div class="form-set">
+          <div class="form">
+            <%= l.label :icon_id, 'アイコン' %>
+            <div class="icon-select">
+              <%= l.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
+                <div class="radio-label" >
+                  <%= b.label { image_tag(b.object.image, class: 'icon-image') } %>
+                </div>
+                <div class="icon-radio-btn">
+                  <%= b.radio_button %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="form-set">
+  <div class="form">
+    <%= s.label :icon_id, 'アイコン' %>
+    <div class="icon-select">
+      <%= s.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
+        <div class="radio-label">
+          <%= b.label { image_tag(b.object.image, class: 'icon-image') } %>
+        </div>
+        <div class="icon-radio-btn">
+          <%= b.radio_button %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    費用
+  </div>
+  <%= s.text_field :cost, class:"cost" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    URL
+  </div>
+  <%= s.text_field :url, class:"url" %>
+</div>
+<div class="add-forms">
+  <label for="label">＋</label>
+  <input type="checkbox" id="label" class="switch" />
+  <div class="add-form">
+    <div class="form-set">
+      <div class="form">
+        URL2
+      </div>
+      <%= s.text_field :url2, class:"url2" %>
+    </div>
+  </div>
+</div>
+<div class="form-set">
+  <div class="form">
+    メモ
+  </div>
+  <%= s.text_area :memo, class:"memo" %>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    イメージ
+  </div>
+  <div class="click-upload">
+    <%= s.file_field :image, class:"upload-btn"%>
+  </div>
+</div>
+<div class="required">
+  <span>*</span>は必須項目です
+</div>

@@ -1,17 +1,5 @@
 /** 全体 **/
 
-.format {
-  box-sizing: border-box;
-  font-family: 'cursive';
-  width: 550px;
-  margin: auto;
-  border: 2px #e6eae6;
-  border-style: ridge;
-  border-radius: 10px;
-  padding: 20px;
-  position: relative;
-}
-
 .form-set {
   margin: 20px;
   color: #006888;
@@ -65,20 +53,8 @@ input[type="date"]{
   cursor: pointer;
 }
 
-.back-btn {
-  margin-left: 20px;
-  width: 100px;
-  height: 50px;
-  border-style: none;
-  border-radius: 10px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #abb1b5;
-  cursor: pointer;
-}
-
 .destroy {
-  position: absolute;
+  text-align: right;
   right: 10px;
   bottom: 10px;
 }
@@ -121,17 +97,14 @@ input[type="date"]{
 /** スケジュール作成 **/
 
 .summary,.departure,.arrival,
-.departure2,.arrival2,.departure3,.arrival3,
-.departure4,.arrival4,.cost,.url,.url2,.memo {
+.departure2,.arrival2,.cost,.url,.url2,.memo {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
 }
 
 .departure_time,.arrival_time,
-.departure_time2,.arrival_time2,
-.departure_time3,.arrival_time3,
-.departure_time4,.arrival_time4 {
+.departure_time2,.arrival_time2 {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   color: #bfbec5;

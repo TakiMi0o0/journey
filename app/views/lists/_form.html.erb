@@ -1,0 +1,33 @@
+<div class="form-set">
+  <div class="form">
+    カテゴリー<span>*</span>
+  </div>
+  <%= l.text_field :category, class:"category", placeholder:"10文字まで", maxlength:"10" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    内容<span>*</span>
+  </div>
+  <%= l.text_field :content, class:"content", placeholder:"15文字まで", maxlength:"15" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    数量
+  </div>
+  <%= l.text_field :quantity, class:"quantity" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    金額
+  </div>
+  <%= l.text_field :price, class:"price" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    メモ
+  </div>
+  <%= l.text_area :list_memo, class:"list_memo"%>
+</div>
+<div class="required">
+  <span>*</span>は必須項目です
+</div>

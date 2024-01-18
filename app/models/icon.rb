@@ -28,6 +28,7 @@ class Icon < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :schedules
+  has_many :locations
 
 end
 

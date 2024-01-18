@@ -1,79 +1,43 @@
-/** 全体の設定 **/
+/** 全体の設定はpartsに記載 **/
+
+/** タブ部分 **/
 
 .schedules {
-  box-sizing: border-box;
-  width: 550px;
-  margin: auto;
-  border: 10px #e6eae6;
-  border-style: groove;
-  border-radius: 10px;
-  padding: 20px;
   position: relative;
 }
 
-.book-btn a{
-  font-size: 18px;
-  font-weight: bold;
-
-  color: #192f60;
-  line-height: 30px;
+.tab-list {
+  position: absolute;
+  top: 10%;
+  left: 100%;
 }
-
-
-/** 新規作成部分 **/
 
 .new-schedules {
-  position: sticky;
-  top: 40px;
-}
-
-.new-schedule-btn {
-  position: absolute;
-  top: 40px;
-  left: calc(100% + 24px);
-}
-
-
-/** リスト部分 **/
-
-.list-tab {
-  display: block;
-  position: sticky;
-  top: 40px;
+  margin-bottom: 10px;
 }
 
 .new-list {
-  position: absolute;
-  top: 140px;
-  left: calc(100% + 24px);
+  margin: 30px 0 20px 0;
 }
 
 .category-index {
-  position: absolute;
-  top: 200px;
-  left: calc(100% + 24px);
+  display: inline-block;
+
 }
 
-.category-list,.new-schedule-btn,.new-list {
-  white-space: nowrap;
-  margin-bottom: 10px;
-  padding: 15px 15px 15px 5px;
-  border: 2px #7d7d7d;
+.new-schedules,.new-list,.category-list {
+  padding: 10px;
+  border: 3px solid #e6eae6;
   border-radius: 0 10px 10px 0;
-  background-color: #7d7d7d;
-  color: #fff;
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
-.new-schedule-btn,.new-list {
-  border-style: double;
+.new-schedules,.new-list {
+  white-space: nowrap;
+  display: inline-block;
 }
 
-.new-schedule-btn a,.new-list a{
-  color: #fff;
-  font-weight: bold;
-
-}
 
 /** 画像 **/
 
@@ -105,7 +69,6 @@
 .day,.date {
   font-size: 16px;
   font-family: 'Caveat', cursive;
-
 }
 
 .day {
@@ -163,11 +126,6 @@
   height: 20px;
 }
 
-.departure-arrival_time,.departure-arrival {
-  display: flex;
-  align-items: center;
-}
-
 
 /** 中身 **/
 
@@ -202,17 +160,26 @@
   color: #00608d;
 }
 
+
+.departure-arrival_time,.departure-arrival {
+  display: flex;
+  align-items: center;
+}
+
+.departure-arrival_time {
+  font-size: 12px;
+  color: #192f60;
+}
+
+.departure-arrival {
+  margin-left: 10px;
+}
+
 .schedule-departure_time {
   font-size: 14px;
   font-weight: bold;
   color: #e62f8b;
   margin-right: 2px;
-}
-
-.departure-arrival_time {
-  display: flex;
-  font-size: 12px;
-  color: #192f60;
 }
 
 .schedule-arrival_time {
@@ -224,9 +191,3 @@
   color: #192f60;
   margin-left: 5px;
 }
-
-.departure-arrival {
-  display: flex;
-  margin-left: 10px;
-}
-

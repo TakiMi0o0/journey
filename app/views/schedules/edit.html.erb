@@ -1,150 +1,19 @@
-<%= render "shared/header" %>
-
 <div class="format">
-  <%= form_with(model: [@book, @schedule], url: book_schedule_path(@book, @schedule), method: :patch, id:'form_id') do |f| %>
-    <div class="form-set">
-      <div class="form">
-        タイトル<span>*</span>
-      </div>
-      <%= f.text_field :summary, class:"summary", placeholder:"20文字まで", maxlength:"20" %>
-    </div>
+  <div class="back">
+    <%= link_to image_tag('back.png'), book_schedules_path(@book) %>
+  </div>
+
+  <%= form_with(model: [@book, @schedule], url: book_schedule_path(@book, @schedule), method: :patch, id:'form_id') do |s| %>
+    <%= render "form", s: s %>
 
     <div class="form-set">
-      <div class="form">
-        出発～到着
-      </div>
-      <%= f.datetime_field :departure_time, class:"period" %>
-      <span>*</span>～
-      <%= f.datetime_field :arrival_time, class:"period" %>
-      <%= f.text_field :departure, class:"departure", placeholder:"出発地" %>
-      ～
-      <%= f.text_field :arrival, class:"arrival", placeholder:"到着地" %>
-    </div>
-
-    <div class="add-forms">
-      <label for="label2">＋</label>
-      <input type="checkbox" id="label2" class="switch" />
-      <div class="add-form">
-        <div class="form-set">
-          <div class="form">
-            出発～到着2
-          </div>
-          <%= f.datetime_field :departure_time2, class:"period" %>
-          ～
-          <%= f.datetime_field :arrival_time2, class:"period" %>
-          <%= f.text_field :departure2, class:"departure2", placeholder:"出発地" %>
-          ～
-          <%= f.text_field :arrival2, class:"arrival2", placeholder:"到着地" %>
-        </div>
-
-        <div class="add-forms">
-          <label for="label3">＋</label>
-          <input type="checkbox" id="label3" class="switch" />
-          <div class="add-form">
-            <div class="form-set">
-              <div class="form">
-                出発～到着3
-              </div>
-              <%= f.datetime_field :departure_time3, class:"period" %>
-              ～
-              <%= f.datetime_field :arrival_time3, class:"period" %>
-              <%= f.text_field :departure3, class:"departure3", placeholder:"出発地" %>
-              ～
-              <%= f.text_field :arrival3, class:"arrival3", placeholder:"到着地" %>
-            </div>
-
-            <div class="add-forms">
-              <label for="label4">＋</label>
-              <input type="checkbox" id="label4" class="switch" />
-              <div class="add-form">
-                <div class="form-set">
-                  <div class="form">
-                    出発～到着4
-                  </div>
-                  <%= f.datetime_field :departure_time4, class:"period" %>
-                  ～
-                  <%= f.datetime_field :arrival_time4, class:"period" %>
-                  <%= f.text_field :departure4, class:"departure4", placeholder:"出発地" %>
-                  ～
-                  <%= f.text_field :arrival4, class:"arrival4", placeholder:"到着地" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="form-set">
-      <div class="form">
-        <%= f.label :icon_id, 'アイコン' %>
-        <div class="icon-select">
-          <%= f.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
-            <div class="radio-label">
-              <%= b.label { image_tag(b.object.image, class: 'icon-image') } %>
-            </div>
-            <div class="icon-radio-btn">
-              <%= b.radio_button %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-set">
-      <div class="form">
-        費用
-      </div>
-      <%= f.text_field :cost, class:"cost" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        URL
-      </div>
-      <%= f.text_field :url, class:"url" %>
-    </div>
-    <div class="add-forms">
-      <label for="label">＋</label>
-      <input type="checkbox" id="label" class="switch" />
-      <div class="add-form">
-        <div class="form-set">
-          <div class="form">
-            URL2
-          </div>
-          <%= f.text_field :url2, class:"url2" %>
-        </div>
-      </div>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        メモ
-      </div>
-      <%= f.text_area :memo, class:"memo" %>
-    </div>
-
-    <div class="form-set">
-      <div class="form">
-        イメージ
-      </div>
-      <div class="click-upload">
-        <%= f.file_field :image, class:"upload-btn"%>
-      </div>
-    </div>
-    <div class="required">
-      <span>*</span>は必須項目です
-    </div>
-    <div class="form-set">
-      <%= f.submit "変更" ,class:"submit-btn" %>
-      <%= link_to 'もどる', book_schedules_path(@book), class:"back-btn" %>
+      <%= s.submit "変更" ,class:"submit-btn" %>
     </div>
     <div class="destroy">
       <div title="予定を削除">
         <%= link_to image_tag("dustbin.png", class:"destroy-icon"), 
-          book_schedule_path, data: { turbo_method: :delete }, method: :delete %>
+          book_schedule_path(@book, @schedule.id), data: { turbo_method: :delete }, method: :delete %>
       </div>
     </div>
   <% end %>
 </div>
-
-<%= render "shared/footer" %>

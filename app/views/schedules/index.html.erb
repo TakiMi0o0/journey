@@ -1,37 +1,12 @@
-<%= render "shared/header" %>
-
-
 <div class='schedules'>
-  <div class="book-btn">
-    <%= link_to 'もどる', root_path %>
-  </div>
-
-  <div class='new-schedules'>
-    <div class='new-schedule-btn'>
-      <% if user_signed_in? && current_user.id == @book.user_id %>
-        <%= link_to '予定作成', new_book_schedule_path, data: {"turbolinks" => false} %>
-      <% end %>
+  <div class="top">
+    <div class="back">
+      <%= link_to image_tag('back.png'), root_path %>
+    </div>
+    <div class="top-title">
+      <%= @book.title %>
     </div>
   </div>
-
-  <div class='list-tab'>
-    <div class='new-list'>
-      <% if user_signed_in? && current_user.id == @book.user_id %>
-        <%= link_to 'リスト作成', new_book_list_path, data: {"turbolinks" => false} %>
-      <% end %>
-    </div>
-
-    <div class='category-index'>
-      <% @lists.each do |list| %>
-        <%= link_to book_lists_path(@book.id) do %>
-          <div class='category-list'>
-            <%= list.category %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
 
   <div class='schedule-index'>
     <% grouped_schedules = @schedules.group_by { |schedule| (schedule.departure_time.to_date - @book.start.to_date).to_i + 1 } %>
@@ -98,93 +73,42 @@
                 </div>
               </div>
 
-
-              <% if schedule.departure_time2.present? || schedule.arrival_time2.present? || schedule.departure2.present? || schedule.arrival2.present? %>
-                <div class="schedule-sub2">
-                  <div class="schedule-time">
-                    <div class="departure-arrival_time">
-                      <div class='schedule-departure_time'>
-                        <%= schedule.departure_time2&.strftime('%H:%M') %>
-                      </div>
-                      <div class='schedule-arrival_time'>
-                        <% if schedule.arrival_time2.present? %>
-                          <%= "-" %>
-                        <% end %>
-                        <%= schedule.arrival_time2&.strftime('%H:%M') %>
-                      </div>
-                    </div>
+              <div class="schedule-sub2">
+                <% schedule.locations.each do |location| %>
+                  <div class='schedule-icon'>
+                    <% if location.icon.is_a?(Icon) && location.icon.id != 0 %>
+                      <%= image_tag location.icon.image, class: "icon-image" %>
+                    <% elsif location.icon.is_a?(String) && location.icon != "0" %>
+                      <%= image_tag location.icon, class: "icon-image" %>
+                    <% end %>
                   </div>
-                  <div class="schedule-location">
-                    <div class="departure-arrival">
-                      <div class='schedule-departure'>
-                        <%= schedule.departure2 %>
-                      </div>
-                      <div class='schedule-arrival'>
-                        <% if schedule.arrival2.present? %>
-                          <%= "～" %>
-                        <% end %>
-                        <%= schedule.arrival2 %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
 
-              <% if schedule.departure_time3.present? || schedule.arrival_time3.present? || schedule.departure3.present? || schedule.arrival3.present? %>
-                <div class="schedule-sub2">
                   <div class="departure-arrival_time">
                     <div class='schedule-departure_time'>
-                      <%= schedule.departure_time3&.strftime('%H:%M') %>
-                    </div>
-                    <div class='schedule-arrival_time'>
-                      <% if schedule.arrival_time3.present? %>
-                        <%= "-" %>
+                      <% if location.departure_time2.present? || location.arrival_time2.present? || location.departure2.present? || location.arrival2.present? %>
+                        <div class='schedule-departure_time'>
+                          <%= location.departure_time2&.strftime('%H:%M') %>
+                        </div>
+                        <div class='schedule-arrival_time'>
+                          <% if location.arrival_time2.present? %>
+                            <%= "-" %>
+                          <% end %>
+                          <%= location.arrival_time2&.strftime('%H:%M') %>
+                        </div>
+                        <div class='schedule-departure'>
+                          <%= location.departure2 %>
+                        </div>
+                        <div class='schedule-arrival'>
+                          <% if location.arrival2.present? %>
+                            <%= "～" %>
+                          <% end %>
+                          <%= location.arrival2 %>
+                        </div>
                       <% end %>
-                      <%= schedule.arrival_time3&.strftime('%H:%M') %>
                     </div>
                   </div>
-
-                  <div class="departure-arrival">
-                    <div class='schedule-departure'>
-                      <%= schedule.departure3 %>
-                    </div>
-                    <div class='schedule-arrival'>
-                      <% if schedule.arrival3.present? %>
-                        <%= "～" %>
-                      <% end %>
-                      <%= schedule.arrival3 %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-
-              <% if schedule.departure_time4.present? || schedule.arrival_time4.present? || schedule.departure4.present? || schedule.arrival4.present? %>
-                <div class="schedule-sub2">
-                  <div class="departure-arrival_time">
-                    <div class='schedule-departure_time'>
-                      <%= schedule.departure_time4&.strftime('%H:%M') %>
-                    </div>
-                    <div class='schedule-arrival_time'>
-                      <% if schedule.arrival_time4.present? %>
-                        <%= "-" %>
-                      <% end %>
-                      <%= schedule.arrival_time4&.strftime('%H:%M') %>
-                    </div>
-                  </div>
-
-                  <div class="departure-arrival">
-                    <div class='schedule-departure'>
-                      <%= schedule.departure4 %>
-                    </div>
-                    <div class='schedule-arrival'>
-                      <% if schedule.arrival4.present? %>
-                        <%= "～" %>
-                      <% end %>
-                      <%= schedule.arrival4 %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
 
               <% if schedule.memo.present? || schedule.url.present? || schedule.url2.present? %>
                 <div class='schedule-sub3'>
@@ -211,6 +135,32 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class='tab-list'>
+    <div class='new-schedules'>
+      <% if user_signed_in? && current_user.id == @book.user_id %>
+        <%= link_to '＋ 予定', new_book_schedule_path, data: {"turbolinks" => false} %>
+      <% end %>
+    </div>
+
+    <div class='list-tab'>
+      <div class='new-list'>
+        <% if user_signed_in? && current_user.id == @book.user_id %>
+          <%= link_to '＋ リスト', new_book_list_path, data: {"turbolinks" => false} %>
+        <% end %>
+      </div>
+
+      <div class='category-index'>
+        <% @categories.each do |c| %>
+          <%= link_to book_lists_path(@book, category: c) do%>
+            <div class='category-list'>
+              <p></p><%= c %>
+              
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= render "shared/footer" %>

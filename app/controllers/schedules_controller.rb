@@ -1,14 +1,16 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :book_find
   before_action :schedule_find, only: [:edit, :update, :destroy]
 
   def index
     @schedules = @book.schedules.order(departure_time: 'ASC')
-    @lists = @book.lists
+    @categories = @book.lists.distinct.pluck(:category)
   end
 
   def new
     @schedule = Schedule.new
+    5.times { @schedule.locations.build }
   end
 
   def create
@@ -32,6 +34,7 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
+    @schedule.locations.destroy_all
     @schedule.destroy
     redirect_to book_schedules_path
   end
@@ -41,10 +44,9 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule)
     .permit(:image, :summary, :icon_id, :departure, :arrival,
-      :departure_time, :arrival_time, :departure2, :arrival2,
-      :departure_time2, :arrival_time2, :departure3, :arrival3,
-      :departure_time3, :arrival_time3, :departure4, :arrival4,
-      :departure_time4, :arrival_time4,:cost, :url, :url2, :memo)
+      :departure_time, :arrival_time,:cost, :url, :url2, :memo,
+      locations_attributes: [:id, :departure2, :arrival2,
+        :departure_time2, :arrival_time2, :icon_id, :_destroy])
     .merge(user_id: current_user.id, book_id: params[:book_id])
   end
 
