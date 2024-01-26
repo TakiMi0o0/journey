@@ -1,11 +1,13 @@
 class ListsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   before_action :book_find
   before_action :list_find, only: [:edit, :update, :destroy]
+  before_action :category_find, except: :destroy
 
   def index
     @category = params[:category]
     @lists = @book.lists.where(category: @category)
+    @content = @book.lists.distinct.pluck(:content)
   end
 
   def new
@@ -41,7 +43,7 @@ class ListsController < ApplicationController
   private
   def list_params
     params.require(:list)
-    .permit(:category, :content, :quantity, :price, :list_memo)
+    .permit(:image, :category, :content, :quantity, :price, :list_memo)
     .merge(user_id: current_user.id, book_id: params[:book_id])
   end
 
@@ -52,4 +54,9 @@ class ListsController < ApplicationController
   def list_find
     @list = List.find(params[:id])
   end
+
+  def category_find
+    @categories = @book.lists.distinct.pluck(:category)
+  end
+
 end

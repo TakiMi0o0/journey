@@ -1,31 +1,49 @@
-<div class='list'>
-  <div class="top">
-    <div class="back">
-      <%= link_to image_tag('back.png'), book_schedules_path(@book) %>
-    </div>
-    <div class='top-title'>
+<div class='tab'>
+  <div class='list'>
+    <div class='top'>
       <%= @category %>
+    </div>
+
+    <div class='list-index'>
+      <% @lists.each do |l| %>
+        <div class='lists'>
+          <div class="list-info">
+            <div class="list-main">
+
+              <div class='list-content'>
+                <%= l.content %>
+              </div>
+
+              <%= link_to edit_book_list_path(l.book, l) do %>
+                <% if l.quantity.present? %>
+                  <div class='list-quantity'>
+                    数量　<%= l.quantity %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <%= link_to edit_book_list_path(l.book, l) do %>
+              <div class="list-sub">
+                <% if l.list_memo.present? %>
+                  <div class='list-memo'>
+                    <%= l.list_memo %>
+                  </div>
+                <% end %>
+                <% if l.price.present? %>
+                  <div class='list-price'>
+                    金額　<%= l.price %>
+                  </div>
+                <% end %>
+                <% if l.image.attached? %>
+                  <%= image_tag l.image, class: "list-img" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
-  <div class='list-index'>
-    <% @lists.each do |l| %>
-      <div class='lists'>
-        <%= link_to edit_book_list_path(l.book, l) do %>
-          <div class='list-content'>
-            <%= l.content %>
-          </div>
-          <div class='list-quantity'>
-            <%= l.quantity %>
-          </div>
-          <div class='list-price'>
-            <%= l.price %>
-          </div>
-          <div class='list_memo'>
-            <%= l.list_memo %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= render "shared/tab" %>
 </div>

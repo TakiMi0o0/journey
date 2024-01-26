@@ -4,10 +4,11 @@
   </div>
 
   <%= form_with model: @book, local: true do |b| %>
+    <%= render 'shared/error_messages', object: b.object %>
     <%= render "form", b: b %>
 
     <div class="form-set">
-      <%= b.submit "変更" ,class:"submit-btn" %>
+      <%= b.submit "変更", class:"submit-btn" %>
     </div>
     <div class="destroy">
       <div title="しおりを削除">

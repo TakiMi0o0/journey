@@ -1,3 +1,12 @@
+/** エラー **/
+.error-message {
+  font-size: 14px;
+  font-weight: bold;
+  color: #d70035;
+  text-align: center;
+}
+
+
 /** 全体 **/
 
 .form-set {
@@ -67,44 +76,38 @@ input[type="date"]{
 
 /** しおり作成 **/
 
-.title,.description,.place {
+.f-title,.f-description,.f-place {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
 }
 
-.description {
+.f-description {
   width: 250px;
   height: 90px;
 }
 
-.period {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
-  color: #bfbec5;
-}
-
-.publication {
+.f-publication {
   display: flex;
   justify-content: center;
 }
 
-.close {
+.f-close {
   margin-right: 25px;
 }
 
 
 /** スケジュール作成 **/
 
-.summary,.departure,.arrival,
-.departure2,.arrival2,.cost,.url,.url2,.memo {
+.f-summary,.f-departure,.f-arrival,
+.f-departure2,.f-arrival2,.f-cost,.f-url,.f-url2,.f-memo {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
 }
 
-.departure_time,.arrival_time,
-.departure_time2,.arrival_time2 {
+.f-departure_time,.f-arrival_time,
+.f-departure_time2,.f-arrival_time2 {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   color: #bfbec5;
@@ -154,20 +157,24 @@ input[type="date"]{
   display: none;
 }
 
-.icon-image {
+.f-icon {
   width: 30px;
   height: 30px;
 }
 
-.icon-image:hover {
+.f-icon:hover {
   cursor: pointer;
 }
 
 
 /** リスト作成 **/
 
-.category,.content,.quantity,.price,.list_memo {
+.f-category,.f-content,.f-quantity,.f-price,.f-list_memo {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
+}
+
+.f-quantity,.f-price{
+  width: 50px;
 }

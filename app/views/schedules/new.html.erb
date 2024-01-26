@@ -1,13 +1,13 @@
-<div class="format">
-  <div class="back">
-    <%= link_to image_tag('back.png'), book_schedules_path(@book) %>
+<div class='tab'>
+  <div class="format">
+    <%= form_with(model: @schedule, url: book_schedules_path(@book), id:'form_id') do |s| %>
+      <%= render 'shared/error_messages', object: s.object %>
+      <%= render "form", s: s %>
+
+      <div class="form-set">
+        <%= s.submit "追加", class:"submit-btn" %>
+      </div>
+    <% end %>
   </div>
-
-  <%= form_with(model: @schedule, url: book_schedules_path(@book), id:'form_id') do |s| %>
-    <%= render "form", s: s %>
-
-    <div class="form-set">
-      <%= s.submit "追加" ,class:"submit-btn" %>
-    </div>
-  <% end %>
+  <%= render "shared/tab" %>
 </div>

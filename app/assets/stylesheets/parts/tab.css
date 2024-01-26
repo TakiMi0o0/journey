@@ -1,0 +1,59 @@
+/** タブ **/
+
+.tab {
+  position: relative;
+}
+
+.tab-list {
+  position: absolute;
+  top: 10%;
+  left: 80vw;
+}
+
+.tab-book-title,.new-schedule,.new-list,.category-list {
+  border-radius: 0 10px 10px 0;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.new-schedule:hover,.new-list:hover,
+.tab-book-title:hover,.category-list:hover {
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.new-schedule,.new-list,.category-list {
+  display: inline-block;
+  padding: 12px 12px 12px 8px;
+}
+
+.tab-book-title a,.category-list a {
+  color: #4e454a;
+}
+
+.new-schedule a,.new-list a {
+  color: #e62f8b;
+}
+
+.tab-book-title {
+  background-color: #f6e5cc;
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  padding: 16px 8px;
+}
+
+.new-schedule {
+  background-color: #bbe2f1;
+}
+
+.new-list {
+  background-color: #bee0c2;
+}
+
+.category-list {
+  margin-bottom: 10px;
+  background-color: #e5c1cd;
+}

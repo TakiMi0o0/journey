@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: :index
   before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
+    @books = Book.includes(:user).all
     @books = Book.all.order(start: 'DESC')
   end
 

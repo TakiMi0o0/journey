@@ -1,0 +1,136 @@
+/** 日付 **/
+.date-group {
+  display: flex;
+  padding: 12px;
+  position: sticky;
+  top: 60px;
+}
+
+.day,.date {
+  font-size: 16px;
+  font-family: 'Caveat', cursive;
+  background-color: #fff3b8;
+}
+
+.day {
+  color: #192f60;
+}
+
+.date {
+  color: #e62f8b;
+  margin: auto;
+}
+
+
+/** 一覧 **/
+
+.s-index {
+  padding: 20px;
+}
+
+.s-info {
+  margin: 10px 0;
+  border: 2px ridge #e6eae6;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #fff3b8;
+}
+
+.s-main1,.s-main2 {
+  display: flex;
+  
+}
+
+.s-sub1,.s-sub2 {
+  display: flex;
+}
+
+.s-main1 {
+  background-color: #008d3b;
+}
+
+.s-list {
+
+}
+
+
+/** 中身 **/
+
+.s-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.d-a,.icon_s-list {
+  display: flex;
+}
+
+.summary {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: bold;
+  color: #192f60;
+  line-height: 30px;
+}
+
+.cost {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #00608d;
+}
+
+.memo {
+  font-size: 12px;
+  color: #192f60;
+}
+
+.url {
+  margin-left: auto;
+}
+
+.url-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.d-a {
+  font-size: 12px;
+  color: #192f60;
+  margin-left: 10px;
+}
+
+.departure_time {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e62f8b;
+  margin-right: 2px;
+}
+
+.arrival_time {
+  margin-left: 2px;
+}
+
+.departure,.arrival {
+  font-size: 12px;
+  color: #192f60;
+  margin-left: 5px;
+}
+
+
+/** 画像 **/
+
+.schedule-img {
+
+}
+
+.s-img {
+  opacity: 50%;
+  object-fit: cover;
+  border-radius: 12px;
+}

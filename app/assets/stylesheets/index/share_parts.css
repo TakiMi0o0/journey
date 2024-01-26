@@ -5,17 +5,10 @@
   font-family: 'monospace';
   width: 60vw;
   margin: auto;
-  border: 10px inset #e6eae6;
+  border: 10px solid #afafb0;
   border-radius: 10px;
   padding: 20px;
-}
-
-.schedules {
-  
-}
-
-.list,.format {
-  height: calc(85vh - 120px);
+  height: calc(88vh - 120px);
   overflow: auto;
 }
 
@@ -25,14 +18,14 @@
   opacity: 0.7;
 }
 
-.top {
-  display: flex;
+.period {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  color: #bfbec5;
 }
 
-.top-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #e62f8b;
-  line-height: 30px;
-  margin: auto;
+.f-d-a {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
 }

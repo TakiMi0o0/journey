@@ -2,19 +2,39 @@
   <div class="form">
     タイトル<span>*</span>
   </div>
-  <%= s.text_field :summary, class:"summary", placeholder:"20文字まで", maxlength:"20" %>
+  <%= s.text_field :summary, class:"f-summary", placeholder:"20文字まで", maxlength:"20" %>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    <%= s.label :icon_id, 'アイコン' %>
+    <div class="icon-select">
+      <%= s.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
+        <div class="radio-label">
+          <%= b.label { image_tag(b.object.image, class: 'f-icon') } %>
+        </div>
+        <div class="icon-radio-btn">
+          <%= b.radio_button %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div class="form-set">
   <div class="form">
     出発～到着
   </div>
-  <%= s.datetime_field :departure_time, value: @book.start.strftime('%Y-%m-%dT%H:%M:%S'), class:"period" %>
-  <span>*</span>～
-  <%= s.datetime_field :arrival_time, value: (s.object.arrival_time || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
-  <%= s.text_field :departure, class:"departure", placeholder:"出発地" %>
-  ～
-  <%= s.text_field :arrival, class:"arrival", placeholder:"到着地" %>
+  <div class='f-d-a'>
+    <%= s.datetime_field :departure_time, value: @book.start.strftime('%Y-%m-%dT%H:%M:%S'), class:"period" %>
+    <span>*</span>～
+    <%= s.datetime_field :arrival_time, value: (s.object.arrival_time || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
+  </div>
+  <div class='f-d-a'>
+    <%= s.text_field :departure, class:"f-departure", placeholder:"出発地" %>
+    ～
+    <%= s.text_field :arrival, class:"f-arrival", placeholder:"到着地" %>
+  </div>
 </div>
 
 <%= s.fields_for :locations do |l| %>
@@ -26,20 +46,25 @@
         <div class="form">
           出発～到着
         </div>
-      
-        <%= l.datetime_field :departure_time2, value: (l.object.departure_time2 || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
-        ～
-        <%= l.datetime_field :arrival_time2, value: (l.object.arrival_time2 || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
-        <%= l.text_field :departure2, class:"departure2", placeholder:"出発地" %>
-        ～
-        <%= l.text_field :arrival2, class:"arrival2", placeholder:"到着地" %>
+
+        <div class='f-d-a'>
+          <%= l.datetime_field :departure_time2, value: (l.object.departure_time2 || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
+          ～
+          <%= l.datetime_field :arrival_time2, value: (l.object.arrival_time2 || Time.now.strftime('%Y/%m/%dT%T')), class:"period" %>
+        </div>
+        <div class='f-d-a'>
+          <%= l.text_field :departure2, class:"f-departure2", placeholder:"出発地" %>
+          ～
+          <%= l.text_field :arrival2, class:"f-arrival2", placeholder:"到着地" %>
+        </div>
+
         <div class="form-set">
           <div class="form">
             <%= l.label :icon_id, 'アイコン' %>
             <div class="icon-select">
               <%= l.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
                 <div class="radio-label" >
-                  <%= b.label { image_tag(b.object.image, class: 'icon-image') } %>
+                  <%= b.label { image_tag(b.object.image, class: 'f-icon') } %>
                 </div>
                 <div class="icon-radio-btn">
                   <%= b.radio_button %>
@@ -55,32 +80,17 @@
 
 <div class="form-set">
   <div class="form">
-    <%= s.label :icon_id, 'アイコン' %>
-    <div class="icon-select">
-      <%= s.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
-        <div class="radio-label">
-          <%= b.label { image_tag(b.object.image, class: 'icon-image') } %>
-        </div>
-        <div class="icon-radio-btn">
-          <%= b.radio_button %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="form-set">
-  <div class="form">
     費用
   </div>
-  <%= s.text_field :cost, class:"cost" %>
+  <%= s.text_field :cost, class:"f-cost" %>
 </div>
 <div class="form-set">
   <div class="form">
     URL
   </div>
-  <%= s.text_field :url, class:"url" %>
+  <%= s.text_field :url, class:"f-url" %>
 </div>
+
 <div class="add-forms">
   <label for="label">＋</label>
   <input type="checkbox" id="label" class="switch" />
@@ -89,22 +99,23 @@
       <div class="form">
         URL2
       </div>
-      <%= s.text_field :url2, class:"url2" %>
+      <%= s.text_field :url2, class:"f-url2" %>
     </div>
   </div>
 </div>
+
 <div class="form-set">
   <div class="form">
     メモ
   </div>
-  <%= s.text_area :memo, class:"memo" %>
+  <%= s.text_area :memo, class:"f-memo" %>
 </div>
 
 <div class="form-set">
   <div class="form">
     イメージ
   </div>
-  <div class="click-upload">
+  <div class="upload">
     <%= s.file_field :image, class:"upload-btn"%>
   </div>
 </div>

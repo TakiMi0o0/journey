@@ -1,11 +1,11 @@
 class SchedulesController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: :index
   before_action :book_find
   before_action :schedule_find, only: [:edit, :update, :destroy]
+  before_action :category_find, except: :destroy
 
   def index
     @schedules = @book.schedules.order(departure_time: 'ASC')
-    @categories = @book.lists.distinct.pluck(:category)
   end
 
   def new
@@ -56,6 +56,10 @@ class SchedulesController < ApplicationController
 
   def schedule_find
     @schedule = Schedule.find(params[:id])
+  end
+
+  def category_find
+    @categories = @book.lists.distinct.pluck(:category)
   end
 
 end

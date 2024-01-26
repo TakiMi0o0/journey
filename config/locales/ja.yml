@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      book:
+        title: タイトル
+        image: 画像
+        start: 開始日
+        publication: 公開または非公開
+      schedule:
+        summary: タイトル
+      list:
+        category: カテゴリー
+        content: 内容

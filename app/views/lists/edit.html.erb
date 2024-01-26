@@ -1,19 +1,19 @@
-<div class="format">
-  <div class="back">
-    <%= link_to image_tag('back.png'), book_schedules_path(@book) %>
-  </div>
+<div class='tab'>
+  <div class="format">
+    <%= form_with model: [@book, @list] do |l| %>
+      <%= render 'shared/error_messages', object: l.object %>
+      <%= render "form", l: l %>
 
-  <%= form_with model: [@book, @list] do |l| %>
-    <%= render "form", l: l %>
-
-    <div class="form-set">
-      <%= l.submit "変更" ,class:"submit-btn" %>
-    </div>
-    <div class="destroy">
-      <div title="削除">
-        <%= link_to image_tag("dustbin.png", class:"destroy-icon"), 
-          book_list_path(@book, @list.id), data: { turbo_method: :delete }, method: :delete %>
+      <div class="form-set">
+        <%= l.submit "変更", class:"submit-btn" %>
       </div>
-    </div>
-  <% end %>
+      <div class="destroy">
+        <div title="削除">
+          <%= link_to image_tag("dustbin.png", class:"destroy-icon"), 
+            book_list_path(@book, @list.id), data: { turbo_method: :delete }, method: :delete %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= render "shared/tab" %>
 </div>

@@ -1,29 +1,29 @@
-/** 新規作成部分 **/
+/** 新規作成 **/
 
-.new-journey {
+.new-book {
   height: 10vh;
   margin-top: 15vh;
   text-align: center;
 }
 
-.new-journey a{
+.new-book a{
   text-decoration: none;
 }
 
-.new-journey-text {
+.new-book-text {
   color: #043c78;
   font-family: 'Caveat', cursive;
   font-size: 30px;
   font-weight: bold;
 }
 
-.new-journey-icon {
+.new-book-icon {
   width: 40px;
   height: 40px;
 }
 
 
-/** 一覧部分 **/
+/** 一覧 **/
 
 .book-index {
   display: flex;
@@ -71,7 +71,7 @@
   margin-left: 2px;
 }
 
-.book-title {
+.title {
   font-size: 18px;
   font-weight: bold;
   color: #043c78;
@@ -83,31 +83,32 @@
   top: 14px;
 }
 
-.book-place,.book-description,.book-start-end {
+.place,.description,.start-end {
   font-size: 14px;
   color: #626063;
   line-height: 16px;
 }
 
-.book-place {
+.place {
   margin: 10px 15px 50px;
 }
 
-.book-description {
+.description {
   margin: 5px;
   width: 220px;
 }
 
-.book-start-end {
+.start-end {
   position: absolute;
   bottom: calc(35vh - 34vh);
   left: 5px;
+  font-weight: bold;
 }
 
 
-/** 設定部分 **/
+/** 設定 **/
 
-.book-setting {
+.setting {
   position: absolute;
   bottom: 8px;
   right: 8px;

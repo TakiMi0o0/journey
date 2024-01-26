@@ -1,127 +1,61 @@
-<div class='schedules'>
-  <div class="top">
+<div class='tab'>
+  <div class='schedules'>
     <div class="back">
       <%= link_to image_tag('back.png'), root_path %>
     </div>
-    <div class="top-title">
-      <%= @book.title %>
-    </div>
-  </div>
 
-  <div class='schedule-index'>
-    <% grouped_schedules = @schedules.group_by { |schedule| (schedule.departure_time.to_date - @book.start.to_date).to_i + 1 } %>
-    <% grouped_schedules.each do |day, schedules_for_day| %>
-      <div class='date-group'>
-        <div class='day'>
-          DAY <%= day %>
-        </div>
-        <div class='date'>
-          <%= schedules_for_day.first.departure_time.strftime('%m/%d (%a)') if schedules_for_day.any? %>
-        </div>
-      </div>
-
-      <% schedules_for_day.each do |schedule| %>
-        <div class='schedule-img-content'>
-          <% if schedule.image.attached? %>
-            <%= image_tag schedule.image, class: "schedule-img" %>
-          <% end %>
+    <div class='s-index'>
+      <% grouped_schedules = @schedules.group_by { |schedule| (schedule.departure_time.to_date - @book.start.to_date).to_i + 1 } %>
+      <% grouped_schedules.each do |day, schedules_for_day| %>
+        <div class='date-group'>
+          <div class='day'>
+            DAY <%= day %>
+          </div>
+          <div class='date'>
+            <%= schedules_for_day.first.departure_time.strftime('%m/%d (%a)') if schedules_for_day.any? %>
+          </div>
         </div>
 
-        <div class='schedule-list'>
-          <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
-            <div class='schedule-info'>
+        <% schedules_for_day.each do |schedule| %>
+          <div class='schedule-img'>
+            <% if schedule.image.attached? %>
+              <%= image_tag schedule.image, class: "s-img" %>
+            <% end %>
+          </div>
 
-              <div class="schedule-main">
-                <div class='schedule-icon'>
+          <div class='s-info'>
+            <div class='s-list'>
+              <div class='s-icon'>
+                <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
                   <% if schedule.icon.is_a?(Icon) && schedule.icon.id != 0 %>
-                    <%= image_tag schedule.icon.image, class: "icon-image" %>
+                    <%= image_tag schedule.icon.image, class: "icon" %>
                   <% elsif schedule.icon.is_a?(String) && schedule.icon != "0" %>
-                    <%= image_tag schedule.icon, class: "icon-image" %>
+                    <%= image_tag schedule.icon, class: "icon" %>
                   <% end %>
-                </div>
+                <% end %>
+              </div>
 
-                <div class='schedule-summary'>
+              <div class="s-main1">
+                <div class='summary'>
                   <%= schedule.summary %>
                 </div>
-                <div class='schedule-cost'>
+                <div class='cost'>
                   <%= schedule.cost %>
                 </div>
               </div>
 
-              <div class="schedule-sub">
-                <div class="departure-arrival_time">
-                  <div class='schedule-departure_time'>
-                    <%= schedule.departure_time&.strftime('%H:%M') %>
-                  </div>
-                  <div class='schedule-arrival_time'>
-                    <% if schedule.arrival_time.present? %>
-                      <%= "-" %>
-                    <% end %>
-                    <%= schedule.arrival_time&.strftime('%H:%M') %>
-                  </div>
-                </div>
-                <div class="departure-arrival">
-                  <div class='schedule-departure'>
-                    <%= schedule.departure %>
-                  </div>
-                  <div class='schedule-arrival'>
-                    <% if schedule.arrival.present? %>
-                      <%= "～" %>
-                    <% end %>
-                    <%= schedule.arrival %>
-                  </div>
-                </div>
-              </div>
-
-              <div class="schedule-sub2">
-                <% schedule.locations.each do |location| %>
-                  <div class='schedule-icon'>
-                    <% if location.icon.is_a?(Icon) && location.icon.id != 0 %>
-                      <%= image_tag location.icon.image, class: "icon-image" %>
-                    <% elsif location.icon.is_a?(String) && location.icon != "0" %>
-                      <%= image_tag location.icon, class: "icon-image" %>
-                    <% end %>
-                  </div>
-
-                  <div class="departure-arrival_time">
-                    <div class='schedule-departure_time'>
-                      <% if location.departure_time2.present? || location.arrival_time2.present? || location.departure2.present? || location.arrival2.present? %>
-                        <div class='schedule-departure_time'>
-                          <%= location.departure_time2&.strftime('%H:%M') %>
-                        </div>
-                        <div class='schedule-arrival_time'>
-                          <% if location.arrival_time2.present? %>
-                            <%= "-" %>
-                          <% end %>
-                          <%= location.arrival_time2&.strftime('%H:%M') %>
-                        </div>
-                        <div class='schedule-departure'>
-                          <%= location.departure2 %>
-                        </div>
-                        <div class='schedule-arrival'>
-                          <% if location.arrival2.present? %>
-                            <%= "～" %>
-                          <% end %>
-                          <%= location.arrival2 %>
-                        </div>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-
               <% if schedule.memo.present? || schedule.url.present? || schedule.url2.present? %>
-                <div class='schedule-sub3'>
-                  <div class='schedule-memo'>
+                <div class='s-main2'>
+                  <div class='memo'>
                     <%= schedule.memo %>
                   </div>
-                  <div class='schedule-url'>
+                  <div class='url'>
                     <% if schedule.url.present? %>
                       <%= link_to image_tag("url.png", class:"url-icon"), 
                         schedule.url, data: {"turbolinks" => false} %>
                     <% end %>
                   </div>
-                  <div class='schedule-url2'>
+                  <div class='url2'>
                     <% if schedule.url2.present? %>
                       <%= link_to image_tag("url.png", class:"url-icon"), 
                         schedule.url2, data: {"turbolinks" => false} %>
@@ -130,37 +64,77 @@
                 </div>
               <% end %>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
 
-  <div class='tab-list'>
-    <div class='new-schedules'>
-      <% if user_signed_in? && current_user.id == @book.user_id %>
-        <%= link_to '＋ 予定', new_book_schedule_path, data: {"turbolinks" => false} %>
+            <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
+              <div class="s-sub1">
+                <div class='d-a'>
+                  <div class='departure_time'>
+                    <%= schedule.departure_time&.strftime('%H:%M') %>
+                  </div>
+                  <div class='arrival_time'>
+                    <% if schedule.arrival_time.present? %>
+                      <%= "-" %>
+                    <% end %>
+                    <%= schedule.arrival_time&.strftime('%H:%M') %>
+                  </div>
+                </div>
+                <div class="d-a">
+                  <div class='departure'>
+                    <%= schedule.departure %>
+                  </div>
+                  <div class='arrival'>
+                    <% if schedule.arrival.present? %>
+                      <%= "～" %>
+                    <% end %>
+                    <%= schedule.arrival %>
+                  </div>
+                </div>
+              </div>
+
+              <% schedule.locations.each do |sl| %>
+                <div class="s-sub2">
+                  <div class='icon'>
+                    <% if sl.icon.is_a?(Icon) && sl.icon.id != 0 %>
+                      <%= image_tag sl.icon.image, class: "icon" %>
+                    <% elsif sl.icon.is_a?(String) && sl.icon != "0" %>
+                      <%= image_tag sl.icon, class: "icon" %>
+                    <% end %>
+                  </div>
+
+                  <% if sl.departure_time2.present? || sl.arrival_time2.present? || sl.departure2.present? || sl.arrival2.present? %>
+                    <div class='d-a'>
+                      <div class='departure_time'>
+                        <%= sl.departure_time2&.strftime('%H:%M') %>
+                      </div>
+                      <div class='arrival_time'>
+                        <% if sl.departure_time2.present? && sl.arrival_time2.present? %>
+                          <%= "-" %>
+                        <% end %>
+                        <%= sl.arrival_time2&.strftime('%H:%M') %>
+                      </div>
+                    </div>
+                    <div class='d-a'>
+                      <div class='departure'>
+                        <%= sl.departure2 %>
+                      </div>
+                      <div class='arrival'>
+                        <% if sl.departure2.present? && sl.arrival2.present? %>
+                          <%= "～" %>
+                        <% end %>
+                        <%= sl.arrival2 %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+
+          </div>
+        <% end %>
+
       <% end %>
     </div>
 
-    <div class='list-tab'>
-      <div class='new-list'>
-        <% if user_signed_in? && current_user.id == @book.user_id %>
-          <%= link_to '＋ リスト', new_book_list_path, data: {"turbolinks" => false} %>
-        <% end %>
-      </div>
-
-      <div class='category-index'>
-        <% @categories.each do |c| %>
-          <%= link_to book_lists_path(@book, category: c) do%>
-            <div class='category-list'>
-              <p></p><%= c %>
-              
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
   </div>
+  <%= render "shared/tab" %>
 </div>
-
