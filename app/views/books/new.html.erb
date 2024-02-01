@@ -1,14 +1,14 @@
 <div class="format">
   <div class="back">
-    <%= link_to image_tag('back.png'), root_path %>
+    <%= link_to image_tag("back.png"), root_path %>
   </div>
 
-  <%= form_with model: @book, local: true do |b| %>
-    <%= render 'shared/error_messages', object: b.object %>
-    <%= render "form", b: b %>
+  <%= form_with model: @book, local: true do |book| %>
+    <%= render "shared/error_messages", object: book.object %>
+    <%= render "form", book: book %>
 
     <div class="form-set">
-      <%= b.submit "出発", class:"submit-btn" %>
+      <%= book.submit "出発", class:"submit-btn" %>
     </div>
   <% end %>
 </div>

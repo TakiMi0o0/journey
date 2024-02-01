@@ -1,9 +1,17 @@
 /** エラー **/
+.error-alert {
+  margin: 30px auto;
+}
+
 .error-message {
   font-size: 14px;
   font-weight: bold;
   color: #d70035;
   text-align: center;
+}
+
+.field_with_errors {
+  display: inline-block;
 }
 
 
@@ -113,36 +121,13 @@ input[type="date"]{
   color: #bfbec5;
 }
 
-.add-forms label {
-  width: 40px;
-  display: block;
-  padding : 3px;
-  color: #fff;
-  font-weight: 900;
-  font-size: 18px;
-  text-align: center;
-  background: #bfbec5;
-  cursor: pointer;
-  margin: auto;
-  border-radius: 10px;
+.f-d-a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 }
 
-.add-forms input[type="checkbox"] {
-  display: none;
-}
-
-.add-form {
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-  margin-bottom: 5px;
-  margin: auto;
-}
-
-.switch:checked + .add-form {
-  height: auto;
-  padding: 3px;
-}
 
 /** スケジュールアイコン **/
 
@@ -175,6 +160,10 @@ input[type="date"]{
   padding: 3px 4px;
 }
 
-.f-quantity,.f-price{
-  width: 50px;
+.f-quantity {
+  width: 45px;
+}
+
+.f-price{
+  width: 78px;
 }

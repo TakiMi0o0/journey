@@ -1,31 +1,31 @@
-<div class='tab'>
-  <div class='schedules'>
+<div class="tab">
+  <div class="schedules">
     <div class="back">
-      <%= link_to image_tag('back.png'), root_path %>
+      <%= link_to image_tag("back.png"), root_path %>
     </div>
 
-    <div class='s-index'>
+    <div class="s-index">
       <% grouped_schedules = @schedules.group_by { |schedule| (schedule.departure_time.to_date - @book.start.to_date).to_i + 1 } %>
       <% grouped_schedules.each do |day, schedules_for_day| %>
-        <div class='date-group'>
-          <div class='day'>
+        <div class="date-group">
+          <div class="day">
             DAY <%= day %>
           </div>
-          <div class='date'>
-            <%= schedules_for_day.first.departure_time.strftime('%m/%d (%a)') if schedules_for_day.any? %>
+          <div class="date">
+            <%= schedules_for_day.first.departure_time.strftime("%m/%d (%a)") if schedules_for_day.any? %>
           </div>
         </div>
 
         <% schedules_for_day.each do |schedule| %>
-          <div class='schedule-img'>
+          <div class="schedule-img">
             <% if schedule.image.attached? %>
               <%= image_tag schedule.image, class: "s-img" %>
             <% end %>
           </div>
 
-          <div class='s-info'>
-            <div class='s-list'>
-              <div class='s-icon'>
+          <div class="s-info">
+            <div class="s-main">
+              <div class="s-icon">
                 <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
                   <% if schedule.icon.is_a?(Icon) && schedule.icon.id != 0 %>
                     <%= image_tag schedule.icon.image, class: "icon" %>
@@ -35,103 +35,96 @@
                 <% end %>
               </div>
 
-              <div class="s-main1">
-                <div class='summary'>
+              <div class="d-a_time">
+                <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
+                  <div class="departure_time">
+                    <%= schedule.departure_time&.strftime("%H:%M") %>
+                  </div>
+                  <div class="arrival_time">
+                    <% if schedule.arrival_time.present? %>
+                      <%= "-" %><%= schedule.arrival_time&.strftime("%H:%M") %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="s-sub1">
+                <div class="summary">
                   <%= schedule.summary %>
                 </div>
-                <div class='cost'>
-                  <%= schedule.cost %>
+                <div class="d-a">
+                  <div class="departure">
+                    <%= schedule.departure %>
+                  </div>
+                  <div class="arrival">
+                    <% if schedule.arrival.present? %>
+                      <%= "～ " %><%= schedule.arrival %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
 
-              <% if schedule.memo.present? || schedule.url.present? || schedule.url2.present? %>
-                <div class='s-main2'>
-                  <div class='memo'>
-                    <%= schedule.memo %>
-                  </div>
-                  <div class='url'>
-                    <% if schedule.url.present? %>
-                      <%= link_to image_tag("url.png", class:"url-icon"), 
-                        schedule.url, data: {"turbolinks" => false} %>
-                    <% end %>
-                  </div>
-                  <div class='url2'>
-                    <% if schedule.url2.present? %>
-                      <%= link_to image_tag("url.png", class:"url-icon"), 
-                        schedule.url2, data: {"turbolinks" => false} %>
-                    <% end %>
-                  </div>
+              <div class="s-sub2">
+                <div class="cost">
+                  <%= schedule.cost %>
                 </div>
-              <% end %>
+                <div class="urls">
+                  <% if schedule.url.present? %>
+                    <%= link_to image_tag("url.png", class:"url-icon"), 
+                      schedule.url, data: {"turbolinks" => false} %>
+                  <% end %>
+                  <% if schedule.url2.present? %>
+                    <%= link_to image_tag("url.png", class:"url-icon"), 
+                      schedule.url2, data: {"turbolinks" => false} %>
+                  <% end %>
+                </div>
+              </div>
             </div>
 
             <%= link_to edit_book_schedule_path(schedule.book, schedule) do %>
-              <div class="s-sub1">
-                <div class='d-a'>
-                  <div class='departure_time'>
-                    <%= schedule.departure_time&.strftime('%H:%M') %>
-                  </div>
-                  <div class='arrival_time'>
-                    <% if schedule.arrival_time.present? %>
-                      <%= "-" %>
-                    <% end %>
-                    <%= schedule.arrival_time&.strftime('%H:%M') %>
-                  </div>
+              <% if schedule.memo.present? %>
+                <div class="memo">
+                  <%= schedule.memo %>
                 </div>
-                <div class="d-a">
-                  <div class='departure'>
-                    <%= schedule.departure %>
-                  </div>
-                  <div class='arrival'>
-                    <% if schedule.arrival.present? %>
-                      <%= "～" %>
-                    <% end %>
-                    <%= schedule.arrival %>
-                  </div>
-                </div>
-              </div>
+              <% end %>
 
               <% schedule.locations.each do |sl| %>
-                <div class="s-sub2">
-                  <div class='icon'>
-                    <% if sl.icon.is_a?(Icon) && sl.icon.id != 0 %>
+                <div class="s-location">
+                  <div class="l-icon">
+                    <% if sl.icon_id2.is_a?(Icon) %>
                       <%= image_tag sl.icon.image, class: "icon" %>
-                    <% elsif sl.icon.is_a?(String) && sl.icon != "0" %>
+                    <% elsif sl.icon_id2.is_a?(String) %>
                       <%= image_tag sl.icon, class: "icon" %>
                     <% end %>
                   </div>
 
-                  <% if sl.departure_time2.present? || sl.arrival_time2.present? || sl.departure2.present? || sl.arrival2.present? %>
-                    <div class='d-a'>
-                      <div class='departure_time'>
-                        <%= sl.departure_time2&.strftime('%H:%M') %>
-                      </div>
-                      <div class='arrival_time'>
-                        <% if sl.departure_time2.present? && sl.arrival_time2.present? %>
-                          <%= "-" %>
-                        <% end %>
-                        <%= sl.arrival_time2&.strftime('%H:%M') %>
-                      </div>
+                  <div class="d-a_time">
+                    <div class="departure_time">
+                      <%= sl.departure_time2&.strftime("%H:%M") %>
                     </div>
-                    <div class='d-a'>
-                      <div class='departure'>
-                        <%= sl.departure2 %>
-                      </div>
-                      <div class='arrival'>
-                        <% if sl.departure2.present? && sl.arrival2.present? %>
-                          <%= "～" %>
-                        <% end %>
-                        <%= sl.arrival2 %>
-                      </div>
+                    <div class="arrival_time">
+                      <% if sl.arrival_time2.present? %>
+                        <%= "-" %><%= sl.arrival_time2&.strftime("%H:%M") %>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </div>
+                  <div class="d-a">
+                    <div class="departure">
+                      <%= sl.departure2 %>
+                    </div>
+                    <div class="arrival">
+                      <% if sl.arrival2.present? %>
+                        <%= "～ " %><%= sl.arrival2 %>
+                      <% end %>
+                    </div>
+                  </div>
+
                 </div>
               <% end %>
             <% end %>
 
           </div>
         <% end %>
-
       <% end %>
     </div>
 

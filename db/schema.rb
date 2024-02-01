@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_082448) do
     t.datetime "arrival_time2"
     t.string "departure2"
     t.string "arrival2"
-    t.integer "icon_id"
+    t.integer "icon_id2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_082448) do
     t.string "departure"
     t.string "arrival"
     t.integer "icon_id"
-    t.string "cost"
+    t.integer "cost"
     t.string "url"
     t.string "url2"
     t.text "memo"

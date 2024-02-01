@@ -15,22 +15,22 @@
 
   <body>
 
-    <div class='header-kotei'>
-      <header class='header'>
-        <%= link_to image_tag("journey-logo.png", class:'journey-icon-header'), "/" %>
-        <form class='search-form' action="#">
-          <input class='input-box' placeholder='旅を探す'>
+    <div class="header-kotei">
+      <header class="header">
+        <%= link_to image_tag("journey-logo.png", class:"journey-icon-header"), "/" %>
+        <form class="search-form" action="#">
+          <input class="input-box" placeholder="旅を探す">
           <button class="search-button">
-            <%= image_tag "search.png", class:'search-icon' %>
+            <%= image_tag "search.png", class:"search-icon" %>
           </button>
         </form>
-        <div class='nav'>
+        <div class="nav">
           <% if user_signed_in? %>
             <%= link_to current_user.nickname, "#", class: "user-nickname" %>
-            <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %>
+            <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %>
           <% else %>
-            <%= link_to 'Login', user_session_path, class: "login" %>
-            <%= link_to 'Sign-up', new_user_registration_path, class: "sign-up" %>
+            <%= link_to "Login", user_session_path, class: "login" %>
+            <%= link_to "Sign-up", new_user_registration_path, class: "sign-up" %>
           <% end %>
         </div>
       </header>
@@ -38,10 +38,10 @@
     
     <%= yield %>
 
-    <div class='footer-kotei'>
-      <footer class='footer'>
+    <div class="footer-kotei">
+      <footer class="footer">
         <%= link_to image_tag("journey-logo.png", class:"journey-icon-footer"), "#" %>
-        <div class='footer-message'>
+        <div class="footer-message">
           LIFE IS A ©JOURNEY
         </div>
       </footer>

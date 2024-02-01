@@ -32,94 +32,86 @@
   margin: 10px 0;
   border: 2px ridge #e6eae6;
   border-radius: 10px;
-  padding: 5px;
-  background-color: #fff3b8;
+  padding: 3px 4px;
 }
 
-.s-main1,.s-main2 {
+.s-main,.s-location,.d-a {
   display: flex;
-  
+  justify-content: start;
+  padding: 5px;
 }
 
 .s-sub1,.s-sub2 {
-  display: flex;
+  display: block;
 }
 
-.s-main1 {
-  background-color: #008d3b;
+.s-sub2 {
+  text-align: right;
+  margin-left: auto;
 }
 
-.s-list {
-
+.s-main {
 }
 
 
 /** 中身 **/
 
-.s-icon {
+.s-icon,.l-icon,.icon {
   width: 30px;
   height: 30px;
 }
 
-.icon {
-  width: 30px;
-  height: 30px;
-}
-
-.d-a,.icon_s-list {
-  display: flex;
-}
-
-.summary {
-  margin-left: auto;
-  font-size: 16px;
-  font-weight: bold;
-  color: #192f60;
-  line-height: 30px;
-}
-
-.cost {
-  margin-top: 5px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #00608d;
-}
-
-.memo {
-  font-size: 12px;
-  color: #192f60;
-}
-
-.url {
-  margin-left: auto;
-}
-
-.url-icon {
-  width: 20px;
-  height: 20px;
+.d-a_time {
+  margin: 0 5px 0 10px;
+  width: 40px;
 }
 
 .d-a {
-  font-size: 12px;
+  font-size: 14px;
   color: #192f60;
-  margin-left: 10px;
 }
 
 .departure_time {
   font-size: 14px;
   font-weight: bold;
   color: #e62f8b;
-  margin-right: 2px;
 }
 
 .arrival_time {
-  margin-left: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #e62f8b;
 }
 
-.departure,.arrival {
-  font-size: 12px;
+.arrival {
+  margin-left: 3px;
+}
+
+.summary {
+  font-size: 16px;
+  font-weight: bold;
   color: #192f60;
-  margin-left: 5px;
+}
+
+.cost {
+  font-size: 12px;
+  font-weight: bold;
+  color: #00608d;
+  margin-bottom: 5px;
+}
+
+.memo {
+  font-size: 12px;
+  color: #e62f8b;
+  margin-left: 95px;
+}
+
+.urls {
+}
+
+.url-icon {
+  width: 20px;
+  height: 20px;
 }
 
 

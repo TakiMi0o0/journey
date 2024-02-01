@@ -65,7 +65,7 @@
 | arrival_time     | datetime   |                                |
 | departure        | string     |                                |
 | arrival          | string     |                                |
-| icon_id          | integer    |                                |
+| icon_id2         | integer    |                                |
 
 ### Association
 

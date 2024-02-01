@@ -6,7 +6,7 @@ class CreateLocations < ActiveRecord::Migration[7.0]
       t.datetime   :arrival_time2
       t.string     :departure2
       t.string     :arrival2
-      t.integer    :icon_id
+      t.integer    :icon_id2
       t.timestamps
     end
   end

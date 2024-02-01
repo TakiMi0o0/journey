@@ -1,33 +1,33 @@
 <% if user_signed_in? && current_user.id == @book.user_id %>
-<div class='tab-list'>
+<div class="tab-list">
 
-  <div class='tab-info'>
-    <div class='tab-book-title'>
+  <div class="tab-info">
+    <div class="tab-book-title">
       <%= link_to @book.title, book_schedules_path(@book), data: {"turbolinks" => false} %>
     </div>
   </div>
 
-  <div class='tab-block'>
-    <div class='new-schedule'>
-      <div class='tab-info'>
-        <%= link_to '＋ 予定', new_book_schedule_path(@book), data: {"turbolinks" => false} %>
+  <div class="tab-block">
+    <div class="new-schedule">
+      <div class="tab-info">
+        <%= link_to "＋ 予定", new_book_schedule_path(@book), data: {"turbolinks" => false} %>
       </div>
     </div>
   </div>
   
-  <div class='tab-block'>
-    <div class='new-list'>
-      <div class='tab-info'>
-        <%= link_to '＋ リスト', new_book_list_path(@book), data: {"turbolinks" => false} %>
+  <div class="tab-block">
+    <div class="new-list">
+      <div class="tab-info">
+        <%= link_to "＋ リスト", new_book_list_path(@book), data: {"turbolinks" => false} %>
       </div>
     </div>
   </div>
 
-  <div class='tab-block'>
-    <% @categories.each do |c| %>
-      <div class='tab-info'>
-        <div class='category-list'>
-          <%= link_to c, book_lists_path(@book, category: c), data: {"turbolinks" => false} %>
+  <div class="tab-block">
+    <% @categories.each do |category| %>
+      <div class="tab-info">
+        <div class="category-list">
+          <%= link_to category, book_lists_path(@book, category: category), data: {"turbolinks" => false} %>
         </div>
       </div>
     <% end %>

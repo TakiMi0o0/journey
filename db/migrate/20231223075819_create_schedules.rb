@@ -9,7 +9,7 @@ class CreateSchedules < ActiveRecord::Migration[7.0]
       t.string     :departure
       t.string     :arrival
       t.integer    :icon_id
-      t.string     :cost
+      t.integer    :cost
       t.string     :url
       t.string     :url2
       t.text       :memo

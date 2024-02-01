@@ -2,27 +2,29 @@
   <div class="form">
     タイトル<span>*</span>
   </div>
-  <%= b.text_field :title, class:"f-title", placeholder:"20文字まで", maxlength:"20" %>
+  <%= book.text_field :title, class:"f-title", placeholder:"20文字まで", maxlength:"20" %>
 </div>
 <div class="form-set">
   <div class="form">
     旅の概要
   </div>
-  <%= b.text_area :description, class:"f-description", placeholder:"70文字まで", rows:"4" ,maxlength:"70" %>
+  <%= book.text_area :description, class:"f-description", placeholder:"70文字まで", rows:"4" ,maxlength:"70" %>
 </div>
 <div class="form-set">
   <div class="form">
     期間
   </div>
-  <%= b.date_field :start, value: (b.object.start || Time.now.strftime("%Y/%m/%d")), class:"period" %>
-  <span>*</span> ～
-  <%= b.date_field :end, class:"period" %>
+  <div class="period-form">
+    <%= book.date_field :start, value: (book.object.start || Time.now.strftime("%Y/%m/%d")), class:"period" %>
+    <span>*</span> ～
+    <%= book.date_field :end, class:"period" %>
+  </div>
 </div>
 <div class="form-set">
   <div class="form">
     場所
   </div>
-  <%= b.text_field :place, maxlength:"30", class:"f-place" %>
+  <%= book.text_field :place, maxlength:"30", class:"f-place" %>
 </div>
 <div class="form-set">
   <div class="form">
@@ -30,12 +32,12 @@
   </div>
   <div class="f-publication">
     <div class="f-close">
-      <%= b.radio_button(:publication, "非公開", class: "publication-btn") %>
-      <%= b.label(:publication, "非公開", value: "非公開") %>
+      <%= book.radio_button(:publication, "非公開", class: "publication-btn") %>
+      <%= book.label(:publication, "非公開", value: "非公開") %>
     </div>
     <div class="f-open">
-      <%= b.radio_button(:publication, "公開", class: "publication-btn") %>
-      <%= b.label(:publication, "公開", value: "公開") %>
+      <%= book.radio_button(:publication, "公開", class: "publication-btn") %>
+      <%= book.label(:publication, "公開", value: "公開") %>
     </div>
   </div>
 </div>
@@ -45,7 +47,7 @@
     イメージ
   </div>
   <div class="upload">
-    <%= b.file_field :images, class:"upload-btn"%>
+    <%= book.file_field :images, class:"upload-btn"%>
   </div>
 </div>
 <div class="required">

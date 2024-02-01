@@ -1,40 +1,40 @@
-<div class='book'>
+<div class="book">
 
-  <div class='new-book'>
+  <div class="new-book">
     <% if user_signed_in? %>
       <%= link_to(new_book_path, data: {"turbolinks" => false}) do %>
-        <%= image_tag 'book.png', class: "new-book-icon" %>
-        <span class='new-book-text'>New Journey</span>
+        <%= image_tag "book.png", class: "new-book-icon" %>
+        <span class="new-book-text">New Journey</span>
       <% end %>
     <% end %>
   </div>
 
-  <div class='book-index'>
+  <div class="book-index">
     <% @books.each do |book| %>
-      <div class='books'>
+      <div class="books">
         <%= link_to book_schedules_path(book.id) do %>
           <% if user_signed_in? && current_user == book.user && book.publication == "非公開" %>
-            <div class='book-btn'>
+            <div class="book-btn">
               <div class="book-cover">
                 <% if book && book.images.attached? %>
                   <% image = book.images.first %>
-                  <%= image_tag image.variant(resize: '300x300'), class: 'book-img' %>
+                  <%= image_tag image.variant(resize: "300x300"), class: "book-img" %>
                 <% else %>
-                  <%= image_tag "sample_airplane.png", class:'book-img' %>
+                  <%= image_tag "sample_airplane.png", class:"book-img" %>
                 <% end %>
               </div>
-              <div class='book-list'>
-                <div class='title'>
+              <div class="book-list">
+                <div class="title">
                   <%= book.title %>
                 </div>
-                <div class='place'>
+                <div class="place">
                   <%= book.place %>
                 </div>
-                <div class='description'>
+                <div class="description">
                   <%= book.description %>
                 </div>
               </div>
-              <div class='start-end'>
+              <div class="start-end">
                 <%= book.start.strftime("%Y/%m/%d") %>
                 <% unless book.end == nil %>
                   <%= "～ " %><%= book.end.strftime("%Y/%m/%d") %>
@@ -42,28 +42,28 @@
               </div>
             </div>
           <% elsif book.publication == "公開" %>
-            <div class='book-btn'>
+            <div class="book-btn">
               <div class="book-cover">
                 <% if book && book.images.attached? %>
                   <% image = book.images.first %>
-                  <%= image_tag image.variant(resize: '300x300'), class: 'book-img' %>
+                  <%= image_tag image.variant(resize: "300x300"), class: "book-img" %>
                 <% else %>
-                  <%= image_tag "sample_airplane.png", class:'book-img' %>
+                  <%= image_tag "sample_airplane.png", class:"book-img" %>
                 <% end %>
               </div>
-              <div class='book-list'>
-                <div class='title'>
+              <div class="book-list">
+                <div class="title">
                   <%= image_tag "open-icon.png", class: "open-icon" %>
                   <%= book.title %>
                 </div>
-                <div class='place'>
+                <div class="place">
                   <%= book.place %>
                 </div>
-                <div class='description'>
+                <div class="description">
                   <%= book.description %>
                 </div>
               </div>
-              <div class='start-end'>
+              <div class="start-end">
                 <%= book.start.strftime("%Y/%m/%d") %>
                 <% unless book.end == nil %>
                   <%= "～ " %><%= book.end.strftime("%Y/%m/%d") %>

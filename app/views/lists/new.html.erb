@@ -1,11 +1,11 @@
-<div class='tab'>
+<div class="tab">
   <div class="format">
-    <%= form_with(model: @list, url: book_lists_path(@book, @category)) do |l| %>
-      <%= render 'shared/error_messages', object: l.object %>
-      <%= render "form", l: l %>
+    <%= form_with(model: @list, url: book_lists_path(@book, @category)) do |list| %>
+      <%= render "shared/error_messages", object: list.object %>
+      <%= render "form", list: list %>
 
       <div class="form-set">
-        <%= l.submit "追加", class:"submit-btn" %>
+        <%= list.submit "追加", class:"submit-btn" %>
       </div>
     <% end %>
   </div>
