@@ -1,0 +1,124 @@
+<div class="form-set">
+  <div class="form">
+    タイトル<span>*</span>
+  </div>
+  <%= schedule.text_field :summary, class:"f-summary", placeholder:"20文字まで", maxlength:"20" %>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    <%= schedule.label :icon_id, "アイコン" %>
+    <div class="icon-select">
+      <%= schedule.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
+        <div class="radio-label" onclick="selectIcon(this)">
+          <%= b.label { image_tag(b.object.image, class: "s-icon", id: "icon_#{b.object.id}") } %>
+        </div>
+        <div class="icon-radio-btn">
+          <%= b.radio_button %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    出発～到着
+  </div>
+  <div class="f-d-a">
+    <%= schedule.datetime_field :departure_time, class:"period" %>
+    <span>*</span>～
+    <%= schedule.datetime_field :arrival_time, class:"period" %>
+  </div>
+  <div class="f-d-a">
+    <%= schedule.text_field :departure, class:"f-departure", placeholder:"出発地" %>
+    ～
+    <%= schedule.text_field :arrival, class:"f-arrival", placeholder:"到着地" %>
+  </div>
+</div>
+
+
+<div class="add-menus-container" id="add-menus">
+  <div class="add-menu" style="display: none;">
+    <%= schedule.fields_for :locations do |location| %>
+      <div class="form-set">
+        <div class="form">
+          <%= location.label :icon_id2, "アイコン" %>
+          <div class="icon-select">
+            <%= location.collection_radio_buttons :icon_id2, Icon.all, :id, :image do |b| %>
+              <div class="radio-label" onclick="selectIcon(this)">
+                <%= b.label { image_tag(b.object.image, class: "f-icon", id: "icon_#{b.object.id}") } %>
+              </div>
+              <div class="icon-radio-btn">
+                <%= b.radio_button %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-set">
+        <div class="form">
+          出発～到着
+        </div>
+        <div class="f-d-a">
+          <%= location.datetime_field :departure_time2, class:"period" %>
+          ～
+          <%= location.datetime_field :arrival_time2, class:"period" %>
+        </div>
+        <div class="f-d-a">
+          <%= location.text_field :departure2, class:"f-departure", placeholder:"出発地" %>
+          ～
+          <%= location.text_field :arrival2, class:"f-arrival", placeholder:"到着地" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="add-menus-container" id="add-menus">
+    <button id="add-button" type="button">＋</button>
+  </div>
+
+  <style>
+  button{border-radius: 10px; border-style: none; font-weight: bold; font-size: 16px;
+        background-color: #a1d8e6; color: #e73562;cursor: pointer; text-align: center;}
+  </style>
+</div>
+
+
+<div class="form-set">
+  <div class="form">
+    費用
+  </div>
+  <%= schedule.text_field :cost, class:"f-cost" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    URL 1
+  </div>
+  <%= schedule.text_field :url, class:"f-url" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    URL 2
+  </div>
+  <%= schedule.text_field :url2, class:"f-url2" %>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    メモ
+  </div>
+  <%= schedule.text_area :memo, class:"f-memo" %>
+</div>
+
+<div class="form-set">
+  <div class="form">
+    イメージ
+  </div>
+  <div class="upload">
+    <%= schedule.file_field :image, class:"upload-btn"%>
+  </div>
+</div>
+<div class="required">
+  <span>*</span>は必須項目です
+</div>

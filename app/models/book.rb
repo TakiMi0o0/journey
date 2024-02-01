@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_many :users
+  belongs_to :user
   has_many :schedules, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many_attached :images

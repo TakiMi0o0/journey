@@ -1,65 +1,14 @@
-<%= render "shared/header" %>
-
 <div class="format">
-  <%= form_with model: @book, local: true do |f| %>
-    <div class="form-set">
-      <div class="form">
-        タイトル<span>*</span>
-      </div>
-      <%= f.text_field :title, class:"title", placeholder:"20文字まで", maxlength:"20" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        旅の概要
-      </div>
-      <%= f.text_area :description, class:"description", placeholder:"70文字まで", rows:"4" ,maxlength:"70" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        期間
-      </div>
-      <%= f.date_field :start, value: (f.object.start || Time.now.strftime("%Y/%m/%d")), class:"period" %>
-      <span>*</span> ～
-      <%= f.date_field :end, class:"period" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        場所
-      </div>
-      <%= f.text_field :place, maxlength:"30", class:"place" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        公開しますか？<span>*</span>
-      </div>
-      <div class="publication">
-        <div class="close">
-          <%= f.radio_button(:publication, "非公開", class: "publication-btn") %>
-          <%= f.label(:publication, "非公開", value: "非公開") %>
-        </div>
-        <div class="open">
-          <%= f.radio_button(:publication, "公開", class: "publication-btn") %>
-          <%= f.label(:publication, "公開", value: "公開") %>
-        </div>
-      </div>
-    </div>
+  <div class="back">
+    <%= link_to image_tag("back.png"), root_path %>
+  </div>
+
+  <%= form_with model: @book, local: true do |book| %>
+    <%= render "shared/error_messages", object: book.object %>
+    <%= render "form", book: book %>
 
     <div class="form-set">
-      <div class="form">
-        イメージ
-      </div>
-      <div class="click-upload">
-        <%= f.file_field :images, class:"upload-btn"%>
-      </div>
-    </div>
-    <div class="required">
-      <span>*</span>は必須項目です
-    </div>
-    <div class="form-set">
-      <%= f.submit "出発" ,class:"submit-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%= book.submit "出発", class:"submit-btn" %>
     </div>
   <% end %>
 </div>
-
-<%= render "shared/footer" %>

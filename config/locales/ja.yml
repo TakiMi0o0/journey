@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      book:
+        title: タイトル
+        image: 画像
+        start: 開始日
+        publication: 公開または非公開
+      schedule:
+        summary: タイトル
+        departure_time: 出発時間
+        cost: 費用
+      list:
+        category: カテゴリー
+        content: 内容
+        price: 金額
+        quantity: 数量

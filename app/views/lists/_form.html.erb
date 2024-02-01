@@ -1,0 +1,41 @@
+<div class="form-set">
+  <div class="form">
+    カテゴリー<span>*</span>
+  </div>
+  <%= list.text_field :category, class:"f-category", placeholder:"10文字まで", maxlength:"10" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    内容<span>*</span>
+  </div>
+  <%= list.text_field :content, class:"f-content", placeholder:"15文字まで", maxlength:"15" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    数量
+  </div>
+  <%= list.text_field :quantity, class:"f-quantity" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    金額
+  </div>
+  <%= list.text_field :price, class:"f-price" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    メモ
+  </div>
+  <%= list.text_field :list_memo, class:"f-list_memo", placeholder:"30文字まで", maxlength:"30" %>
+</div>
+<div class="form-set">
+  <div class="form">
+    イメージ
+  </div>
+  <div class="upload">
+    <%= list.file_field :image, class:"upload-btn"%>
+  </div>
+</div>
+<div class="required">
+  <span>*</span>は必須項目です
+</div>

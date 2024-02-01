@@ -1,16 +1,21 @@
-/** 全体 **/
-
-.format {
-  box-sizing: border-box;
-  font-family: 'cursive';
-  width: 550px;
-  margin: auto;
-  border: 2px #e6eae6;
-  border-style: ridge;
-  border-radius: 10px;
-  padding: 20px;
-  position: relative;
+/** エラー **/
+.error-alert {
+  margin: 30px auto;
 }
+
+.error-message {
+  font-size: 14px;
+  font-weight: bold;
+  color: #d70035;
+  text-align: center;
+}
+
+.field_with_errors {
+  display: inline-block;
+}
+
+
+/** 全体 **/
 
 .form-set {
   margin: 20px;
@@ -65,20 +70,8 @@ input[type="date"]{
   cursor: pointer;
 }
 
-.back-btn {
-  margin-left: 20px;
-  width: 100px;
-  height: 50px;
-  border-style: none;
-  border-radius: 10px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #abb1b5;
-  cursor: pointer;
-}
-
 .destroy {
-  position: absolute;
+  text-align: right;
   right: 10px;
   bottom: 10px;
 }
@@ -91,82 +84,50 @@ input[type="date"]{
 
 /** しおり作成 **/
 
-.title,.description,.place {
+.f-title,.f-description,.f-place {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
 }
 
-.description {
+.f-description {
   width: 250px;
   height: 90px;
 }
 
-.period {
-  border-radius: 10px;
-  border: solid 1px #cbd0d3;
-  color: #bfbec5;
-}
-
-.publication {
+.f-publication {
   display: flex;
   justify-content: center;
 }
 
-.close {
+.f-close {
   margin-right: 25px;
 }
 
 
 /** スケジュール作成 **/
 
-.summary,.departure,.arrival,
-.departure2,.arrival2,.departure3,.arrival3,
-.departure4,.arrival4,.cost,.url,.url2,.memo {
+.f-summary,.f-departure,.f-arrival,
+.f-departure2,.f-arrival2,.f-cost,.f-url,.f-url2,.f-memo {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
 }
 
-.departure_time,.arrival_time,
-.departure_time2,.arrival_time2,
-.departure_time3,.arrival_time3,
-.departure_time4,.arrival_time4 {
+.f-departure_time,.f-arrival_time,
+.f-departure_time2,.f-arrival_time2 {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   color: #bfbec5;
 }
 
-.add-forms label {
-  width: 40px;
-  display: block;
-  padding : 3px;
-  color: #fff;
-  font-weight: 900;
-  font-size: 18px;
-  text-align: center;
-  background: #bfbec5;
-  cursor: pointer;
-  margin: auto;
-  border-radius: 10px;
+.f-d-a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 }
 
-.add-forms input[type="checkbox"] {
-  display: none;
-}
-
-.add-form {
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-  margin-bottom: 5px;
-  margin: auto;
-}
-
-.switch:checked + .add-form {
-  height: auto;
-  padding: 3px;
-}
 
 /** スケジュールアイコン **/
 
@@ -181,20 +142,28 @@ input[type="date"]{
   display: none;
 }
 
-.icon-image {
+.f-icon {
   width: 30px;
   height: 30px;
 }
 
-.icon-image:hover {
+.f-icon:hover {
   cursor: pointer;
 }
 
 
 /** リスト作成 **/
 
-.category,.content,.quantity,.price,.list_memo {
+.f-category,.f-content,.f-quantity,.f-price,.f-list_memo {
   border-radius: 10px;
   border: solid 1px #cbd0d3;
   padding: 3px 4px;
+}
+
+.f-quantity {
+  width: 45px;
+}
+
+.f-price{
+  width: 78px;
 }

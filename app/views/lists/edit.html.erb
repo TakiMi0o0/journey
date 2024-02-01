@@ -1,52 +1,19 @@
-<%= render "shared/header" %>
+<div class="tab">
+  <div class="format">
+    <%= form_with model: [@book, @list] do |list| %>
+      <%= render "shared/error_messages", object: list.object %>
+      <%= render "form", list: list %>
 
-<div class="format">
-<%= form_with(model: [@book, @list], url: book_list_path(@book, @list), method: :patch) do |f| %>
-  <%= form_with(model: @list, url: book_lists_path(@book)) do |f| %>
-    <div class="form-set">
-      <div class="form">
-        カテゴリー<span>*</span>
+      <div class="form-set">
+        <%= list.submit "変更", class:"submit-btn" %>
       </div>
-      <%= f.text_field :category, class:"category", placeholder:"10文字まで", maxlength:"10" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        内容<span>*</span>
+      <div class="destroy">
+        <div title="削除">
+          <%= link_to image_tag("dustbin.png", class:"destroy-icon"), 
+            book_list_path(@book, @list.id), data: { turbo_method: :delete }, method: :delete %>
+        </div>
       </div>
-      <%= f.text_field :content, class:"content", placeholder:"15文字まで", maxlength:"15" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        数量
-      </div>
-      <%= f.text_field :quantity, class:"quantity" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        金額
-      </div>
-      <%= f.text_field :price, class:"price" %>
-    </div>
-    <div class="form-set">
-      <div class="form">
-        メモ
-      </div>
-      <%= f.text_area :list_memo, class:"list_memo"%>
-    </div>
-    <div class="required">
-      <span>*</span>は必須項目です
-    </div>
-    <div class="form-set">
-      <%= f.submit "追加" ,class:"submit-btn" %>
-      <%=link_to 'もどる', book_schedules_path(@book), class:"back-btn" %>
-    </div>
-    <div class="destroy">
-      <div title="削除">
-        <%= link_to image_tag("dustbin.png", class:"destroy-icon"), 
-          book_schedule_path, data: { turbo_method: :delete }, method: :delete %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <%= render "shared/tab" %>
 </div>
-
-<%= render "shared/footer" %>

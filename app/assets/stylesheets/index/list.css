@@ -1,0 +1,58 @@
+
+
+.lists {
+  margin: 10px 0;
+  border-bottom: 2px solid #e6eae6;
+  padding: 4px 10px;
+}
+
+.top {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e62f8b;
+  text-align: center;
+}
+
+.list-index {
+  padding: 30px;
+}
+
+.list-info {
+
+}
+
+.list-main,.list-sub {
+  display: flex;
+  font-weight: bold;
+  color: #4e454a;
+}
+
+.list-main {
+  font-size: 18px;
+  justify-content: space-between;
+}
+
+.list-sub {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.list-content {
+
+}
+
+.list-price {
+  
+}
+
+.list-quantity {
+  color: #e62f8b;
+}
+
+.list-memo {
+
+}
+
+.list-price {
+  margin-left: auto;
+}

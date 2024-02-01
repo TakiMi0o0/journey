@@ -1,34 +1,40 @@
 <div class="contents row">
-  <div class="container">
-    <h2>Sign up</h2>
-    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
-      <div class="field">
-        <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
-        <%= f.text_field :nickname, autofocus: true, maxlength: "6" %>
+  <div class="format">
+    <%= form_with model: @user, url: user_registration_path, id: "new_user", class: "new_user", local: true do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="user-in">
+        新規登録
+      </div>
+      <div class="form-set">
+        <div class="form">
+          ニックネーム
+        </div>
+        <%= f.text_field :nickname, class:"nickname", placeholder:"10文字まで", autofocus: true, maxlength: "10" %>
       </div>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email %>
+      <div class="form-set">
+        <div class="form">
+          メールアドレス
+        </div>
+        <%= f.email_field :email, class:"email" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+      <div class="form-set">
+        <div class="form">
+          パスワード
+        </div>
+        <%= f.password_field :password, class:"password", placeholder:"8文字以上の半角英数字" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <div class="form-set">
+        <div class="form">
+          パスワード（確認用）
+        </div>
+        <%= f.password_field :password_confirmation, class:"password_confirmation" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up" %>
+      <div class="form-set">
+        <%= f.submit "Sign-up", class:"submit-btn" %>
       </div>
     <% end %>
   </div>

@@ -1,0 +1,18 @@
+.user-in {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e62f8b;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.nickname,.email,.password,.password_confirmation {
+  border-radius: 10px;
+  border: solid 1px #cbd0d3;
+  padding: 3px 4px;
+  margin-top: 5px;
+}
+
+.nickname {
+  width: 130px;
+}
