@@ -36,6 +36,7 @@
   position: relative;
   border-radius: 12px;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 .book-btn {
@@ -50,7 +51,6 @@
 .book-cover {
   width: 250px;
   height: 300px;
-
 }
 
 .book-img {

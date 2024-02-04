@@ -1,5 +1,9 @@
 <div class="tab">
   <div class="format">
+    <div class="back">
+      <%= link_to image_tag("back.png"), book_schedules_path %>
+    </div>
+
     <%= form_with(model: @schedule, url: book_schedules_path(@book), id:"form_id") do |schedule| %>
       <%= render "shared/error_messages", object: schedule.object %>
       <%= render "form", schedule: schedule %>

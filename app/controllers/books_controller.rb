@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :search]
   before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
@@ -34,6 +34,10 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to root_path
+  end
+
+  def search
+    @books = Book.search(params[:keyword])
   end
 
 
