@@ -43,9 +43,9 @@
     <%= schedule.fields_for :locations do |location| %>
       <div class="form-set">
         <div class="form">
-          <%= location.label :icon_id2, "アイコン" %>
+          <%= location.label :icon_id, "アイコン" %>
           <div class="icon-select">
-            <%= location.collection_radio_buttons :icon_id2, Icon.all, :id, :image do |b| %>
+            <%= location.collection_radio_buttons :icon_id, Icon.all, :id, :image do |b| %>
               <div class="radio-label" onclick="selectIcon(this)">
                 <%= b.label { image_tag(b.object.image, class: "f-icon", id: "icon_#{b.object.id}") } %>
               </div>

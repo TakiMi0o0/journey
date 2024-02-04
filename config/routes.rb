@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resources :books do
     resources :schedules
     resources :lists
+    collection do
+      get "search"
+    end
   end
 end

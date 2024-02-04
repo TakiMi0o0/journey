@@ -67,14 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_082448) do
   end
 
   create_table "locations", charset: "utf8", force: :cascade do |t|
-    t.integer "schedule_id"
+    t.bigint "schedule_id"
     t.datetime "departure_time2"
     t.datetime "arrival_time2"
     t.string "departure2"
     t.string "arrival2"
-    t.integer "icon_id2"
+    t.integer "icon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_locations_on_schedule_id"
   end
 
   create_table "schedules", charset: "utf8", force: :cascade do |t|
@@ -114,6 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_082448) do
   add_foreign_key "books", "users"
   add_foreign_key "lists", "books"
   add_foreign_key "lists", "users"
+  add_foreign_key "locations", "schedules"
   add_foreign_key "schedules", "books"
   add_foreign_key "schedules", "users"
 end

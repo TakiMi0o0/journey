@@ -12,7 +12,11 @@
   overflow: auto;
 }
 
-.back img{
+.back-search {
+  margin: 0 0 30px 30px;
+}
+
+.back-search img,.back img{
   width: 30px;
   height: 30px;
   opacity: 0.7;

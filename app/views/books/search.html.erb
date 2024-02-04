@@ -1,0 +1,12 @@
+<div class="book">
+  <div class="back-search">
+    <%= link_to image_tag("back.png"), root_path %>
+  </div>
+  
+  <div class="book-index">
+    <% @books.each do |book| %>
+      <%= render partial: "books", locals: { book: book } %>
+    <% end %>
+  </div>
+  
+</div>

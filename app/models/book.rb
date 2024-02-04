@@ -5,5 +5,13 @@ class Book < ApplicationRecord
   has_many_attached :images
   
   validates :title, :start, :publication, presence: true
+
+  def self.search(search)
+    if search != ""
+      Book.where(['title LIKE(?) OR description LIKE(?) OR place LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      Book.all
+    end
+  end
   
 end

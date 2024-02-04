@@ -43,8 +43,11 @@
 | book             | references | null: false, foreign_key: true |
 | summary          | string     | null: false                    |
 | departure_time   | datetime   | null: false                    |
+| arrival_time     | datetime   |                                |
+| departure        | string     |                                |
+| arrival          | string     |                                |
 | icon_id          | integer    |                                |
-| cost             | string     |                                |
+| cost             | integer    |                                |
 | url1             | string     |                                |
 | url2             | string     |                                |
 | memo             | text       |                                |
@@ -58,14 +61,14 @@
 
 ## locations テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| schedule         | references | null: false, foreign_key: true |
-| departure_time2  | datetime   |                                |
-| arrival_time     | datetime   |                                |
-| departure        | string     |                                |
-| arrival          | string     |                                |
-| icon_id2         | integer    |                                |
+| Column           | Type     | Options                        |
+| ---------------- | -------- | ------------------------------ |
+| schedule_id      | integer  | null: false, foreign_key: true |
+| departure_time2  | datetime |                                |
+| arrival_time     | datetime |                                |
+| departure        | string   |                                |
+| arrival          | string   |                                |
+| icon_id2         | integer  |                                |
 
 ### Association
 
