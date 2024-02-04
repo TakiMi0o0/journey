@@ -23,6 +23,7 @@ class SchedulesController < ApplicationController
   end
 
   def edit
+    @schedule.locations.build
   end
 
   def update
