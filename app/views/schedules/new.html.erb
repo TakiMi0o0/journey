@@ -18,15 +18,15 @@
 
 <script>
   document.getElementById("add-button").addEventListener("click", function() {
-    var container = document.getElementById("add-menus");
-    var addMenu = container.querySelector(".add-menu");
+    const container = document.getElementById("add-menus");
+    const addMenu = container.querySelector(".add-menu");
     
     // 新しいメニューを作成
-    var newMenu = addMenu.cloneNode(true);
+    const newMenu = addMenu.cloneNode(true);
     newMenu.style.display = "block";
     
     // 個別の「－」ボタンを作成
-    var removeButton = document.createElement("button");
+    const removeButton = document.createElement("button");
     removeButton.type = "button";
     removeButton.innerText = "－";
     removeButton.className = "btn btn-secondary remove-button";

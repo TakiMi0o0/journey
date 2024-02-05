@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :schedules
     resources :lists
+    resource :likes, only: [:create, :destroy]
     collection do
       get "search"
     end
