@@ -1,7 +1,1 @@
-<% if @like.persisted? %>
-  // いいねが作成された場合の処理
-  turbo_stream.append("like-btn<%= @book.id %>", '<%= j(render partial: "likes/like", locals: { book: @book }) %>');
-<% else %>
-  // いいねの作成が失敗した場合の処理
-  alert("いいねの作成に失敗しました。");
-<% end %>
+<%= turbo_stream.remove @book %>

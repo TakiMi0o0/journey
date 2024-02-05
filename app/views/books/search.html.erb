@@ -64,13 +64,12 @@
                 <% end %>
               </div>
             </div>
+
+            <div id="like-btn<%= book.id %>">
+              <%= render partial: "likes/like", locals: { book: book } %>
+            </div>
           <% end %>
         <% end %>
-
-        <div id="like-btn<%= book.id %>">
-          <%= render partial: "likes/like", locals: { book: book } %>
-        </div>
-
 
         <% if user_signed_in? && current_user.id == book.user_id %>
           <div class="setting">
