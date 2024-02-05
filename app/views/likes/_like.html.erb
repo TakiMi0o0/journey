@@ -1,0 +1,9 @@
+<% if user_signed_in? && book.liked_by?(current_user) %>
+  <%= link_to book_likes_path(book.id), method: :delete, remote: true, data: { turbo_method: :delete } do %>
+    <%= image_tag("like.png", class: "book_liked") %>
+  <% end %>
+<% elsif user_signed_in? %>
+  <%= link_to book_likes_path(book.id), method: :post, remote: true, data: { turbo_method: :post } do %>
+    <%= image_tag("icon_heart.png", class: "book_like") %>
+  <% end %>
+<% end %>

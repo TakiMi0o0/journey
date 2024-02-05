@@ -106,11 +106,25 @@
 }
 
 
+/** お気に入り **/
+.book_like,.book_liked {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  height: 25px;
+  width: 25px;
+}
+
+.book_like {
+  opacity: .4;
+}
+
+
 /** 設定 **/
 
 .setting {
   position: absolute;
-  bottom: 8px;
+  top: 8px;
   right: 8px;
 }
 

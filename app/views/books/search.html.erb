@@ -5,7 +5,79 @@
   
   <div class="book-index">
     <% @books.each do |book| %>
-      <%= render partial: "books", locals: { book: book } %>
+      <div class="books">
+        <%= link_to book_schedules_path(book.id) do %>
+          <% if user_signed_in? && current_user == book.user && book.publication == "非公開" %>
+            <div class="book-btn">
+              <div class="book-cover">
+                <% if book && book.images.attached? %>
+                  <% image = book.images.first %>
+                  <%= image_tag image.variant(resize: "300x300"), class: "book-img" %>
+                <% else %>
+                  <%= image_tag "sample_airplane.png", class:"book-img" %>
+                <% end %>
+              </div>
+              <div class="book-list">
+                <div class="title">
+                  <%= book.title %>
+                </div>
+                <div class="place">
+                  <%= book.place %>
+                </div>
+                <div class="description">
+                  <%= book.description %>
+                </div>
+              </div>
+              <div class="start-end">
+                <%= book.start.strftime("%Y/%m/%d") %>
+                <% unless book.end == nil %>
+                  <%= "～ " %><%= book.end.strftime("%Y/%m/%d") %>
+                <% end %>
+              </div>
+            </div>
+          <% elsif book.publication == "公開" %>
+            <div class="book-btn">
+              <div class="book-cover">
+                <% if book && book.images.attached? %>
+                  <% image = book.images.first %>
+                  <%= image_tag image.variant(resize: "300x300"), class: "book-img" %>
+                <% else %>
+                  <%= image_tag "sample_airplane.png", class:"book-img" %>
+                <% end %>
+              </div>
+              <div class="book-list">
+                <div class="title">
+                  <%= image_tag "open-icon.png", class: "open-icon" %>
+                  <%= book.title %>
+                </div>
+                <div class="place">
+                  <%= book.place %>
+                </div>
+                <div class="description">
+                  <%= book.description %>
+                </div>
+              </div>
+              <div class="start-end">
+                <%= book.start.strftime("%Y/%m/%d") %>
+                <% unless book.end == nil %>
+                  <%= "～ " %><%= book.end.strftime("%Y/%m/%d") %>
+                <% end %>
+              </div>
+            </div>
+
+            <div id="like-btn<%= book.id %>">
+              <%= render partial: "likes/like", locals: { book: book } %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if user_signed_in? && current_user.id == book.user_id %>
+          <div class="setting">
+            <%= link_to image_tag("setting.png", class:"setting-icon"), 
+              edit_book_path(book.id), method: :get %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
   

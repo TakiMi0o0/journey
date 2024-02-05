@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_082448) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_05_050227) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_082448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "likes", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_likes_on_book_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "lists", charset: "utf8", force: :cascade do |t|
@@ -113,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_082448) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "users"
+  add_foreign_key "likes", "books"
+  add_foreign_key "likes", "users"
   add_foreign_key "lists", "books"
   add_foreign_key "lists", "users"
   add_foreign_key "locations", "schedules"
