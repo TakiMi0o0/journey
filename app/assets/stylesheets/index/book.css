@@ -107,15 +107,18 @@
 
 
 /** お気に入り **/
-.book_like,.book_liked {
+#book_like,#book_liked {
   position: absolute;
   bottom: 8px;
   right: 8px;
+}
+
+#book_like img,#book_liked img{
   height: 25px;
   width: 25px;
 }
 
-.book_like {
+#book_like {
   opacity: .4;
 }
 
