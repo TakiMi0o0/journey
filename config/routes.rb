@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "books#index"
+  root to: "users#show"
   resources :users, only: :show
   resources :books do
     resources :schedules
