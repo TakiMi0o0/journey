@@ -13,7 +13,7 @@
 }
 
 .day {
-  color: #192f60;
+  color: #202020;
 }
 
 .date {
@@ -68,7 +68,7 @@
 
 .d-a {
   font-size: 14px;
-  color: #192f60;
+  color: #202020;
 }
 
 .departure_time {
@@ -90,7 +90,7 @@
 .summary {
   font-size: 16px;
   font-weight: bold;
-  color: #192f60;
+  color: #202020;
 }
 
 .cost {
