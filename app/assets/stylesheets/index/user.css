@@ -1,0 +1,63 @@
+/** 新規作成 **/
+
+.link-books {
+  height: 10vh;
+  margin-top: 5vh;
+  margin-left: 15vw;
+}
+
+.new-journey {
+  color: #202020;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.new-book-icon {
+  width: 31px;
+  height: 31px;
+}
+
+
+/** マイページ **/
+
+.link-books {
+  display: flex;
+  align-items: center;
+  margin-top: -5vh;
+}
+
+.all-book {
+  margin-left: auto;
+  margin-right: 15vw;
+}
+
+.all-book-icon {
+  width: 31px;
+  height: 31px;
+}
+
+.everyone {
+  color: crimson;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.my-books {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #7d7d7d;
+  margin-bottom: 2vh;
+}
+
+.my-journeys,.my-favorite-journeys {
+  color: #202020;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0 2vw;
+  background-color: #82cddd;
+}
+
+.my-favorite-journeys {
+
+}
