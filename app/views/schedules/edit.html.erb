@@ -21,34 +21,3 @@
   </div>
   <%= render "shared/tab" %>
 </div>
-
-<script>
-  document.getElementById("add-button").addEventListener("click", function() {
-    var container = document.getElementById("add-menus");
-    var addMenu = container.querySelector(".add-menu");
-    
-    // 新しいメニューを作成
-    var newMenu = addMenu.cloneNode(true);
-    newMenu.style.display = "block";
-    
-    // 個別の「－」ボタンを作成
-    var removeButton = document.createElement("button");
-    removeButton.type = "button";
-    removeButton.innerText = "－";
-    removeButton.className = "btn btn-secondary remove-button";
-    removeButton.addEventListener("click", function() {
-      // クリックされた「－」ボタンに対応するメニューを非表示にする
-      newMenu.style.display = "none";
-    });
-
-    // コピーしたメニューに「－」ボタンを追加
-    newMenu.appendChild(removeButton);
-    
-    // コピーしたメニューを追加
-    container.insertBefore(newMenu, container.lastChild);
-    
-    // ボタンを下に移動
-    container.appendChild(container.querySelector("#add-button"));
-    document.getElementById("schedule-form").submit();
-  });
-</script>
