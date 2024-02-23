@@ -7,7 +7,10 @@ class UsersController < ApplicationController
   end
   
   def show
-    @nickname = current_user.nickname
-    @books = current_user.books
+    @user = User.find(params[:id])
+    @books = @user.books
+
+    likes = Like.where(user_id: current_user.id).pluck(:book_id)  # ログイン中のユーザーのお気に入りのbook_idカラムを取得
+    @like_list = Book.find(likes)     # booksテーブルから、お気に入り登録済みのレコードを取得
   end
 end

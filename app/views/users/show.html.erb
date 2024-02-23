@@ -7,6 +7,7 @@
         <span class="new-journey">New Journey</span>
       <% end %>
     </div>
+
     <div class="all-book">
       <%= link_to books_path do %>
         <%= image_tag "all-book.png", class: "all-book-icon" %>
@@ -16,14 +17,12 @@
   </div>
 
   <div class="my-books">
-    <%= link_to "My Journeys", users_path, class:"my-journeys" %>
-    <div class="my-favorite-journeys">
-      My favorite journeys
-    </div>
+    <%= link_to "My Journeys", "/", class:"my-journeys" %>
+    <%= link_to "My favorite journeys", users_path, class:"my-favorite-journeys" %>
   </div>
 
   <div class="book-index">
-    <% @books.each do |book| %>
+    <% @like_list.each do |likes| %>
       <%= render "books/book", book: book %>
     <% end %>
   </div>
