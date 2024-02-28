@@ -18,7 +18,7 @@
 
   <div class="my-books">
     <%= link_to "My Journeys", "/", class:"my-journeys" %>
-    <%= link_to "My favorite journeys", users_path, class:"my-favorite-journeys" %>
+    <%= link_to "My favorite journeys", user_path(current_user), class:"my-favorite-journeys" %>
   </div>
 
   <div class="book-index">

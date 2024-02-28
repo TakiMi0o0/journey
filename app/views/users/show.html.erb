@@ -22,7 +22,7 @@
   </div>
 
   <div class="book-index">
-    <% @like_list.each do |likes| %>
+    <% @like_list.each do |book| %>
       <%= render "books/book", book: book %>
     <% end %>
   </div>
